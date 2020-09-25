@@ -6,6 +6,10 @@ JDK
 
 Maven的配置文件  settings.xml
 
+Idea的基本配置,确保项目建立方便
+
+工作区和项目  以及   项目和模块   的关系
+
 tomcat
 
 mysql
@@ -27,4 +31,7 @@ JDK的版本配置
 创建Spring的主配置文件Beans.xml
 
 创建一个测试类,使用主方法进行测试
+
+
+
 
