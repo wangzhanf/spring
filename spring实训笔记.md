@@ -14,6 +14,8 @@ tomcat
 
 mysql
 
+通过junit进行单元测试[注意scope的范围配置]
+
 ## 注意点:
 
 JDK的版本配置
