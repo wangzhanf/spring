@@ -35,5 +35,28 @@ JDK的版本配置
 创建一个测试类,使用主方法进行测试
 
 
+# IDEA常用快捷键
+打开设置    ctrl+shift+s
+
+剪切行     ctrl+X
+
+删除行     ctrl+Y
+
+重制行     ctrl+D
+
+查看类关系  ctrl+H
+
+定位       ctrl+N或者连续两次shift
+
+#IDEA中编写markDown格式文件的常用格式
+\```     输入代码块
+
+**      粗体
+
+`![name](imgPath)`    插入图片
+
+
+
+
 
 
