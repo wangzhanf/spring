@@ -110,7 +110,13 @@ JDK的版本配置
 
 创建Spring的主配置文件Beans.xml
 
-创建一个测试类,使用主方法进行测试
+创建一个测试类,
+
+
+# spring 通过java配置类的方式装配Bean
+1 创建实体类(所有属性都提供setter和getter,覆写toString,提供无参和有参构造函数)
+2 创建配置类 使用@configuration修饰类   使用   @Bean修饰方法,方法返回实体类的对象
+3 创建测试类   使用主方法进行测试 ,创建 AnnotationConfigApplicationContext  超级工厂(IOC容器)通过 通过 getBean获取其中注册的Bean对象 
 
 
 # IDEA常用快捷键

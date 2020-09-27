@@ -8,3 +8,4 @@ public class RunHello {
 }
 //idea中  alt+enter    补全代码
 //getter和setter方法,构造函数,可以使用快捷键    alt+insert
+
