@@ -119,6 +119,9 @@ JDK的版本配置
 3 创建测试类   使用主方法进行测试 ,创建 AnnotationConfigApplicationContext  超级工厂(IOC容器)通过 通过 getBean获取其中注册的Bean对象 
 
 
+
+# spring  通过xml的配置方式装配Bean
+
 # IDEA常用快捷键
 打开设置    ctrl+shift+s
 

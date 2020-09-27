@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="FirstSpring" />
+        <module name="secondSpring" />
         <module name="testDemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="FirstSpring" target="11" />
+      <module name="secondSpring" target="11" />
       <module name="testDemo" target="11" />
     </bytecodeTargetLevel>
   </component>

@@ -11,7 +11,7 @@ public class HelloTest {
         //通过context对象提供的getBean方法获取Bean,默认情况获得的对象是Object的,需要强制类型转换
 //        Hello newhello = (Hello) context.getBean("newhello");
         Hello newhello = context.getBean("newhello", Hello.class);
-        newhello.setMesssage("我的新消息");
+//        newhello.setMesssage("我的新消息");
         System.out.println(newhello);
     }
 }

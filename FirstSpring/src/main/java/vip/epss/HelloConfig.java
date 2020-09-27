@@ -11,7 +11,7 @@ public class HelloConfig {
 
     @Bean(name="newhello")
     public Hello getHello(){
-        return new Hello();
+        return new Hello("这是张三餐馆提供的麻婆豆腐");
     }
 
 }
