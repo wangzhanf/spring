@@ -64,6 +64,42 @@ JDK的版本配置
 
 项目和模块的关系
 
+
+
+高内聚,低耦合
+
+# 如何引入spring的框架
+
+通过仓库查询框架的依赖坐标(GAV)
+
+1\通过maven的官网      https://mvnrepository.com/
+
+2\通过镜像站点    https://maven.aliyun.com/mvn/guide
+
+# 如何创建第一个spring的项目
+
+创建一个moudle
+
+![1601177846425](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601177846425.png)
+
+选择创建一个maven项目
+
+![1601177899931](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601177899931.png)
+
+修改GAV配置
+
+![1601178159364](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601178159364.png)
+
+此时,项目使用了maven作为构建管理工具,maven的主配置文件叫做   pom.xml   
+
+修改pom文件,导入依赖包
+
+![1601178395571](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601178395571.png)
+
+查看导入的依赖包
+
+![1601178599500](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601178599500.png)
+
 # spring体系结构
 
 ![image-20200924220901044](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/image-20200924220901044.png)
