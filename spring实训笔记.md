@@ -2,13 +2,55 @@
 
 ## 基本环境
 
-JDK
+### JDK
+
+1 解压JDK     d:\javaDev\jdk11.0.5
+
+2 配置环境变量     JAVA_HOME       path
+
+3 测试      命令行     java  -version    /    javac  -version
+
+
 
 Maven的配置文件  settings.xml
+
+​	maven    是一个  自动化  依赖 , 构建,项目管理工具
+
+​	建议:更改maven的配置文件  setttings.xml    ,配置国内镜像
+
+​	配置环境变量:    以本机为例     执行文件在  D:\javaDev\ideaIU-2020.2.1.win\plugins\maven\lib\maven3
+
+​		配置MAVEN_HOME   和path    
+
+​       测试:    mvn -v
+
+​	
+
+
 
 Idea的基本配置,确保项目建立方便
 
 工作区和项目  以及   项目和模块   的关系
+
+​	idea中的project相当于eclipse中的workspace
+
+​	建议的方法:创建一个空目录,通过idea打开,相当创建了一个空白项目
+
+​	idea中的module相当于eclipse中的project
+
+### Idea中的基本配置
+
+修改文件编码
+
+![1601172928457](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601172928457.png)
+
+编译器
+
+![1601173004475](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601173004475.png)
+
+maven的配置
+
+![1601173100609](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1601173100609.png)
 
 tomcat
 
