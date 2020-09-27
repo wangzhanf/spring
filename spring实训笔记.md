@@ -121,7 +121,30 @@ JDK的版本配置
 
 
 # spring  通过xml的配置方式装配Bean
+1 创建实体类(所有属性都提供setter和getter,覆写toString,提供无参和有参构造函数)
+2 创建配置文件(在src目录下创建Beans.xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="secondHello" class="vip.epss.domian.Hello">
 
+    </bean>
+</beans>
+```
+3 创建测试类:   通过   FileSystemXmlApplicationContext  获取  context容器,
+
+# 使用junit进行单元测试
+传统的测试方式,缺陷在于需要将运行代码放在main方法执行
+1 导入junit的包(导入依赖)      
+2 编写测试类:通过@Test  注解测试方法
+
+# 获取applicationContext的方式有  4种
+    AnnotationConfigApplicationContext
+    FileSystemXmlApplicationContext
+    XmlBeanFactory
+    ClassPathXmlApplicationContext
 # IDEA常用快捷键
 打开设置    ctrl+shift+s
 

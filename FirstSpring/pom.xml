@@ -42,6 +42,18 @@
             <version>5.2.6.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <!-- scrope范围一般有
+            test: 测试时有效,但是不发布
+            provided:测试和发布时都有效
+            compile:编译和发布时有效
+              -->
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
