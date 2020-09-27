@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="vip.epss" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
+    <bean id="user" class="vip.epss.pojo.User">
+        <property name="username" value="wangzhanf"></property>
+        <property name="password" value="111111"></property>
+    </bean>
+
+    <bean id="employee" class="vip.epss.pojo.Employee" autowire="byName">
+        <property name="eid" value="1"></property>
+        <property name="ename" value="epss"></property>
+<!--        <property name="etest" value="null"></property>-->
+        <property name="etest">
+<!--            <null></null>-->
+            <null />
+        </property>
+        <property name="user" ref="user"></property>
+        <property name="user.password" value="222222"></property>
+        <property name="edes">
+            <value>我的个人介绍:<![CDATA[<strong>我很强</strong>]]>多谢品鉴</value>
+        </property>
+        <property name="ephone">
+            <list>
+                <value>110</value>
+                <value>119</value>
+                <value>120</value>
+            </list>
+        </property>
+        <property name="eluck">
+            <set>
+                <value>7</value>
+                <value>80</value>
+                <value>99</value>
+            </set>
+        </property>
+        <property name="emap">
+            <map>
+                <entry key="王者荣耀">
+                    <value>99</value>
+                </entry>
+                <entry key="LOL" value="156">
+                </entry>
+            </map>
+        </property>
+        <property name="erelation">
+            <props>
+                <prop key="son">wyc</prop>
+                <prop key="dau">wrh</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

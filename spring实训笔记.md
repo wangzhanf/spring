@@ -140,7 +140,7 @@ JDK的版本配置
 1 导入junit的包(导入依赖)      
 2 编写测试类:通过@Test  注解测试方法
 
-# 获取applicationContext的方式有  4种
+# 目前获取applicationContext的方式有  4种
     AnnotationConfigApplicationContext
     FileSystemXmlApplicationContext
     XmlBeanFactory
@@ -165,8 +165,14 @@ JDK的版本配置
 
 `![name](imgPath)`    插入图片
 
-
-
+# 本章节的常见注解
+@Configuration  用于修饰类,标明该类是一个java配置类
+@Bean   用于修饰方法,标明该方法的返回值是一个需要纳入到applicationContext的Bean
+@Test   用于修饰方法,junit单元测试方法的声明
+@RunWith(SpringJUnit4ClassRunner.class)   用于修饰类,标明该类中的方法测试时使用spring的容器单元作为基础
+@ContextConfiguration(classes = xxxx.class)    用于修饰类,标明该类中的方法运行时使用的applicationContext来自于一个配置类
+@ContextConfiguration(locations = {"classpath:xxx.xml","classpath:yyy.xml"})    用于修饰类,标明该类中的方法运行时使用的applicationContext来自于一些xml配置文件
+@Autowired  用于修饰属性,标明该属性是由applicationContext容器中的Bean自动匹配注入
 
 
 

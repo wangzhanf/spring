@@ -12,6 +12,7 @@ import org.springframework.core.io.ClassPathResource;
 public class Demo0003_Spring的XML实现方式 {
 
     //从类名称可以看出是解析XML格式Bean的工厂类
+    //特点:直到第一次getBean获取实例时才会创建Bean,不会校验XML文件的正确性,装配错误马上产生异常
     @Test
     public void XmlBeanFactory方式() {
         XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
@@ -28,6 +29,7 @@ public class Demo0003_Spring的XML实现方式 {
     }
 
     //通过ClassPathXmlApplicationContext获取spring配置文件的方式,如果是第一个例子,需要说明文件存储的位置和classpath的概念
+    //在ApplicationContext自身被实例化时一次完成所有的Bean的创建,会校验XML文件的正确性
     @Test
     public void classPathXmlApplicationContext方式() {
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:Beans.xml");
