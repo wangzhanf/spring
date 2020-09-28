@@ -176,3 +176,36 @@ JDK的版本配置
 
 
 
+
+
+
+
+# 昨日回顾
+如何使用单元测试 junit
+测试的spring框架的工作
+
+1 创建一个模块  ,
+2 修改pom的配置文件
+    指定maven的编码和jdk的版本
+    导入依赖包,  spring-context    junit
+3 创建实体类[空参和有参构造,setter和getter方法,toString方法  alt+insert]
+
+4 创建一个测试类
+
+5 向容器(超级工厂) 添加Bean[配置类,xml配置文件,注解的方法]
+
+6 创建一个配置类[@Configuration   @Bean]
+
+7 创建一个spring的xml配置文件
+
+7  spring的获取容器的方式[4种]
+    
+    
+    
+设计模式:[套路]
+    单例,代理,工厂,观察者
+    MVC 
+    三层结构(表现层,service,dao)
+    
+    
+    
