@@ -208,4 +208,14 @@ JDK的版本配置
     三层结构(表现层,service,dao)
     
     
+   
+   
+#  向Bean注入数据的方式
+    构造方法注入:<constructor-arg>
+    setter方法注入:<property>
     
+    
+    
+# Spring整合junit进行单元测试
+ 1  导入  spring-test
+ 2 编写测试类   

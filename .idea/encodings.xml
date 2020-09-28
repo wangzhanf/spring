@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/DiDemo/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/DiDemo/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FirstSpring/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/FirstSpring/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/day02spring/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/day02spring/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/secondSpring/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/secondSpring/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day01002FirstSpring/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day01002FirstSpring/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day01003secondSpring/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day01003secondSpring/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day02001spring/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day02001spring/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day02002DiDemo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day02002DiDemo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testDemo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/testDemo/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
