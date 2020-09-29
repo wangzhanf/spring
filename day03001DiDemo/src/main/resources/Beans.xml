@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+ default-autowire="no">
+    <bean id="car" class="vip.epss.domain.Car">
+        <property name="brand" value="Benz"></property>
+        <property name="wheel" value="5"></property>
+    </bean>
+
+    <bean id="car1" class="vip.epss.domain.Car">
+        <property name="brand" value="BMW"></property>
+        <property name="wheel" value="3"></property>
+    </bean>
+
+    <bean id="boss" class="vip.epss.domain.Boss" autowire="byName">
+        <property name="name" value="mht"></property>
+    </bean>
+</beans>
