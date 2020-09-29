@@ -13,7 +13,7 @@
         <property name="password" value="111111"></property>
     </bean>
 
-    <bean id="employee" class="vip.epss.pojo.Employee" autowire="byName">
+    <bean id="employee" class="vip.epss.pojo.Employee" autowire="byType">
         <property name="eid" value="1"></property>
         <property name="ename" value="epss"></property>
 <!--        <property name="etest" value="null"></property>-->

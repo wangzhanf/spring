@@ -6,4 +6,32 @@
         <property name="name" value="wangzhanfBySpring"></property>
         <property name="age" value="19"></property>
     </bean>
+
+
+    <!-- 1 spring 整合MyBatis -->
+    <!-- 1.1 配置连接池,通过连接池管理数据库连接,则不需要独立的mybatis.xml配置文件了 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl"
+                  value="jdbc:mysql://localhost:3306/shhyssm?serverTimezone=UTC&amp;unicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="user" value="root"/>
+        <property name="password" value="P@ssw0rd"/>
+    </bean>
+
+    <!-- 1.2 配置sqlSessionFactory工厂,数据源使用数据库连接池提供的数据源(通过ref引用) -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 给映射的类配置别名 -->
+        <!-- 默认的别名是model类的首字母小写 -->
+        <!-- 如：User实体类   vip.epss.domain.User。别名为：User -->
+        <property name="typeAliasesPackage" value="vip.epss.domain;vip.epss.pojo"/>
+
+    </bean>
+
+    <!-- 1.3 配置需要生成动态代理的接口是哪些 -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="vip.epss.dao"/>
+    </bean>
+
+
 </beans>

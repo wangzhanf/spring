@@ -5,6 +5,6 @@
     <bean id="userDao" class="vip.epss.dao.UserDaoImpl"></bean>
 
     <bean id="userService" class="vip.epss.service.UserServiceImpl">
-        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+<!--        <constructor-arg name="userDao" ref="userDao"></constructor-arg>-->
     </bean>
 </beans>
