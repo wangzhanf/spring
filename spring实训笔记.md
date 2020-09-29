@@ -388,6 +388,27 @@ spring中通过<import>标签整合多个配置文件,一般情况按照分层�
 3 创建实体类  
 4 创建项目结构
 5 创建配置文件 
-6 给类添加 @Component注解   [实现类]
+6 给类添加 @Component注解   [给实现类添加而不是给接口添加]
 
 ![1601173100609](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/三层结构.png)
+
+
+# MyBatis
+iBatis的后续版本
+持久层框架,进行数据库的访问
+包括SQLMap(sql和java的分离)   和 DAO
+MyBatis是一个ORM的半自动化框架
+    ORM     对象关系映射[类--表,属性--字段,实例对象--记录,属性的类型应该兼容字段的类型]
+    半自动化代表我们可以定制
+    
+## 使用MyBatis
+先决条件是:有数据库 , 需要数据库的驱动程序(maven导入)
+
+# Idea链接MySQL数据库
+
+# MyBatis的基本使用
+1 创建一个moudle模块  (maven)
+2 修改pom文件导入依赖包
+    mybatis     mysql-connector
+3 创建mybatis的主配置文件   mybatis.xml
+4 创建sql mapper文件   .xml格式

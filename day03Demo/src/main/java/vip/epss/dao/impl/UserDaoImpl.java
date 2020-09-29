@@ -19,6 +19,7 @@ public class UserDaoImpl implements UserDao {
         List<User> users = new LinkedList();
         users.add(zs);
         users.add(ls);
+        //模拟了数据库的返回
         return users;
     }
 }

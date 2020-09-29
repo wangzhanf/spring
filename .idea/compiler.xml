@@ -9,6 +9,7 @@
         <module name="day03001DiDemo" />
         <module name="DiDemo" />
         <module name="day02InArgs" />
+        <module name="day03MyBatisDemo1" />
         <module name="testDemo" />
         <module name="day03Demo" />
       </profile>
@@ -21,6 +22,7 @@
       <module name="day02InArgs" target="11" />
       <module name="day03001DiDemo" target="11" />
       <module name="day03Demo" target="11" />
+      <module name="day03MyBatisDemo1" target="11" />
       <module name="DiDemo" target="11" />
       <module name="testDemo" target="11" />
     </bytecodeTargetLevel>
