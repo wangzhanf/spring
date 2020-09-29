@@ -268,6 +268,126 @@ JDK的版本配置
 
 4 创建Beans.xml,尝试多种参数的注入
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!--    首先应该创建Dept的bean-->
+    <bean id="dept" class="vip.epss.domain.Dept">
+<!--        注入的方式有两种,构造器\setter-->
+        <property name="did" value="101"></property>
+        <property name="dname">
+            <value>市场部</value>
+        </property>
+    </bean>
+
+<!--    创建Emp的bean-->
+    <bean id="emp" class="vip.epss.domain.Emp">
+        <property name="eid" value="1007"></property>
+        <property name="ename" value="zhangsan"></property>
+        <property name="dept" ref="dept"></property>
+        <property name="dept.did" value="110"></property>
+<!--        第一种方式,转义符-->
+<!--        <property name="edes" value="&lt;strong&gt;我很厉害&lt;//strong&gt;"></property>-->
+<!--        第二种方式:CDATA-->
+        <property name="edes">
+            <value>
+                <![CDATA[<strong>我很厉害</strong>]]>
+            </value>
+        </property>
+<!--        <property name="eobj" value="null"></property>-->
+        <property name="eobj">
+            <null></null>
+        </property>
+        <property name="ephone">
+            <list>
+                <value>13100000000</value>
+                <value>13999999999</value>
+            </list>
+        </property>
+        <property name="eluck">
+            <set>
+                <value>6</value>
+                <value>6</value>
+                <value>8</value>
+                <value>99</value>
+            </set>
+        </property>
+        <property name="erelation">
+            <map>
+                <entry>
+                    <key><value>father</value></key>
+                    <value>zhangdasan</value>
+                </entry>
+                <entry>
+                    <key><value>mother</value></key>
+                    <value>lisi</value>
+                </entry>
+            </map>
+        </property>
+        <property name="ehobby">
+            <props>
+                <prop key="王者荣耀">30</prop>
+                <prop key="LOL">432</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
 ```
 5 编写测试类
+```java
+package vip.epss.test;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import vip.epss.domain.Emp;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:Beans.xml"})
+public class TestArgs {
+
+    @Autowired
+    private Emp emp;
+
+    @Test
+    public void test01(){
+        System.out.println(emp);
+        System.out.println(emp.getEobj() == null);
+    }
+}
+
+```
+注入:依赖注入   DI     ,
+
+spring中的自动注入中,默认使用的是byType
+
+在spring中,默认的bean都是单例模式,应用程序中修改的bean对象都是同一个
+如果需要每使用一次bean创建一个实例  ,需要指定bean标签的scope为prototype
+
+spring中通过<import>标签整合多个配置文件,一般情况按照分层整合
+
+
+
+@Configuration
+@Bean
+@Test
+@RunWith
+@ContextConfiguration
+@AutoWired
+
+
+
+
+# 通过注解的方式进行spring的配置
+1 创建一个module,引入依赖包
+2 创建项目的结构    三层结构  (表示层(MVC),业务层(service),持久层(dao))
+3 创建实体类  
+4 创建项目结构
+5 创建配置文件 
+6 给类添加 @Component注解   [实现类]
+
+![1601173100609](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/三层结构.png)

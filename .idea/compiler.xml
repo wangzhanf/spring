@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="day03001DiDemo" />
         <module name="DiDemo" />
         <module name="day02InArgs" />
         <module name="testDemo" />
+        <module name="day03Demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
@@ -17,6 +19,8 @@
       <module name="day02001spring" target="11" />
       <module name="day02002DiDemo" target="11" />
       <module name="day02InArgs" target="11" />
+      <module name="day03001DiDemo" target="11" />
+      <module name="day03Demo" target="11" />
       <module name="DiDemo" target="11" />
       <module name="testDemo" target="11" />
     </bytecodeTargetLevel>
