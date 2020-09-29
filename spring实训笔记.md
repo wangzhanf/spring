@@ -408,7 +408,60 @@ MyBatis是一个ORM的半自动化框架
 
 # MyBatis的基本使用
 1 创建一个moudle模块  (maven)
-2 修改pom文件导入依赖包
+    ```xml
+    <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>11</maven.compiler.source>
+            <maven.compiler.target>11</maven.compiler.target>
+        </properties>
+    ```
+2 修改pom文件导入依赖包[pom文件修改后一定要刷新]
     mybatis     mysql-connector
 3 创建mybatis的主配置文件   mybatis.xml
+```xml
+
+```
 4 创建sql mapper文件   .xml格式
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+dao层接口和mapper文件一般都是同名
+    UserMapper.xml           接口文件应该是    UserMapper.java
+    mapper文件中的namespace属性指向 接口
+    id指向 接口中的方法[id值和接口中的方法名相同]
+    parameterType  就是方法的形参
+    resultType   就是方法的返回值,如果是集合类型,使用元素类型表示
+-->
+
+<mapper namespace="vip.epss.dao.UserMapper">
+    <select id="selectAll" resultType="vip.epss.domain.User">
+        select * from user
+    </select>
+</mapper>
+```
+
+5 测试程序
+```java
+@Test
+    public void test() throws IOException {
+        //1 加载mybatis的主配置文件
+        InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
+        //2 获得SqlSessionFactory对象,相当于以前的  connection对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        //3 获取SqlSession()
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        //4 获取mapper对象
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        //5 执行sql
+        List<User> users = mapper.selectAll();
+        //6 输出结果
+        for (User user:users
+             ) {
+            System.out.println(user);
+        }
+    }
+```

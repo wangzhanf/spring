@@ -32,4 +32,22 @@ public class MyBatisTest {
             System.out.println(user);
         }
     }
+
+    @Test
+    public void testDelete() throws IOException {
+        //1 加载mybatis的主配置文件
+        InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
+        //2 获得SqlSessionFactory对象,相当于以前的  connection对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        //3 获取SqlSession()
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);//自动提交方式
+        //4 获取mapper对象
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        //5 执行sql
+        Integer integer = mapper.deleteByUid(3);
+
+//        sqlSession.commit();//提交
+        //6 输出结果
+        System.out.println("共有"+integer+"条记录被删除了");
+    }
 }
