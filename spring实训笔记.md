@@ -465,3 +465,50 @@ dao层接口和mapper文件一般都是同名
         }
     }
 ```
+
+
+
+#  Spring整合MyBatis
+目前我们整合的基本思路都是   xxx框架整合到  spring中
+
+1 导入相关的依赖包
+    spring-jdbc
+    spring-tx
+    mybatis-spring整合包
+    数据库连接池c3p0   (dbcp     c3p0    druid)
+2 配置spring的主配置文件
+```xml
+<!--    1 spring去接管mybatis的连接数据库的能力-->
+    <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/java6"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="mysql"></property>
+
+        <property name="maxPoolSize" value="80"></property>
+    </bean>
+<!--    2 由Spring去管理SqlSessionFactory的创建-->
+    <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="comboPooledDataSource"></property>
+<!--        配置别名映射-->
+        <property name="typeAliasesPackage" value="vip.epss.domain"></property>
+    </bean>
+<!--    3 让Spring配置可以扫描到的mapper文件,让MyBties可以扫描并匹配-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="vip.epss.dao"></property>
+    </bean>
+
+```
+
+
+
+
+# 特别提醒,  spring的5.2.x  和  c3p0 的0.9.1.2  不能一起工作
+spring 5.1.X   和   com.mchange的c3p0 的  0.9.5.2 可以匹配工作
+
+课堂任务:创建一个实体类  Account   ,通过controller模拟实现从A账号到B账号转账100元的操作
+
+十一作业:
+网上商城系统的后台实现:   订单,商品,商品种类,用户表
+                    (通过resultType,通过resultMap实现)
+

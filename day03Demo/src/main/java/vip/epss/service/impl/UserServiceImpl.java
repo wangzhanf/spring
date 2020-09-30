@@ -15,11 +15,31 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userDao;
+    private UserMapper userMapper;
 
     @Override
     public List<User> findAll() {
         System.out.println("userService de findall method");
-        return userDao.selectAll();
+        return userMapper.selectAll();
+    }
+
+    @Override
+    public Integer insert(User user) {
+        return userMapper.insert(user);
+    }
+
+    @Override
+    public Integer delete(Integer uid) {
+        return userMapper.deleteByUid(uid);
+    }
+
+    @Override
+    public Integer update(User user) {
+        return userMapper.update(user);
+    }
+
+    @Override
+    public User selectByUid(Integer uid) {
+        return userMapper.selectByUid(uid);
     }
 }

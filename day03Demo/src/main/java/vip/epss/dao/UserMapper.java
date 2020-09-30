@@ -1,10 +1,12 @@
 package vip.epss.dao;
 
+import org.springframework.stereotype.Repository;
 import vip.epss.domain.User;
 
 import java.util.List;
 
 //User的Dao层接口
+//@Repository("userMapper")
 public interface UserMapper {
     public User selectByUid(Integer uid);
     //提供了一个可以返回所有User对象的方法
