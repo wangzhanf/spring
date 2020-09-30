@@ -32,6 +32,33 @@
             <version>4.12</version>
             <scope>provided</scope>
         </dependency>
+<!--        导入mybatis的相关依赖包-->
+<!--        连接数据库的驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+<!--        mybatis框架-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <!--    发布资源-->
+        <resources>
+            <resource>
+                <!--此处配置到java是因为mapper.xml文件在src.main.java.vip.epss.dao目录-->
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>

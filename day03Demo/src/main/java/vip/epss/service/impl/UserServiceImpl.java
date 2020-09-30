@@ -1,9 +1,8 @@
 package vip.epss.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import vip.epss.dao.UserDao;
+import vip.epss.dao.UserMapper;
 import vip.epss.domain.User;
 import vip.epss.service.UserService;
 
@@ -16,7 +15,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserMapper userDao;
 
     @Override
     public List<User> findAll() {

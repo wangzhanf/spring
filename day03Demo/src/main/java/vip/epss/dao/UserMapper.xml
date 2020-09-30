@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+dao层接口和mapper文件一般都是同名
+    UserMapper.xml           接口文件应该是    UserMapper.java
+    mapper文件中的namespace属性指向 接口
+    id指向 接口中的方法[id值和接口中的方法名相同]
+    parameterType  就是方法的形参
+    resultType   就是方法的返回值,如果是集合类型,使用元素类型表示
+-->
+
+<mapper namespace="vip.epss.dao.UserMapper">
+    <select id="selectAll" resultType="vip.epss.domain.User">
+        select * from user
+    </select>
+
+    <select id="selectByUid" parameterType="int" resultType="vip.epss.domain.User">
+        select * from user where uid=#{uid}
+    </select>
+
+<!--
+可以通过 ${}     #{}   表达式调用传递过来的变量
+${}  原始输入    不能防止Sql注入
+建议使用   #{}   防sql注入攻击
+使用#{}方式的时候,如果输入参数是一个8+1类型, 变量名随意,一般建议使用value
+如果传入的参数是对象   通过对象表示法访问     car.wheel
+-->
+    <delete id="deleteByUid" parameterType="int">
+        delete from user where uid=#{abcd}
+    </delete>
+<!--    如果使用到的是自定义的对象类型,如果没有设置别名,则需要使用全限定类名-->
+    <insert id="insert" parameterType="vip.epss.domain.User">
+        insert into user (username,password) values (#{username},#{password});
+    </insert>
+
+    <update id="update" parameterType="vip.epss.domain.User">
+        update user set username=#{username},password=#{password} where uid=#{uid}
+    </update>
+</mapper>
