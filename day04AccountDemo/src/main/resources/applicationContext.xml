@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    组件扫描的范围,扫描  -->
+    <context:component-scan base-package="vip.epss"></context:component-scan>
+
+<!--    1 spring去接管mybatis的连接数据库的能力-->
+    <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/java6"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="mysql"></property>
+
+        <property name="maxPoolSize" value="80"></property>
+    </bean>
+<!--    2 由Spring去管理SqlSessionFactory的创建-->
+    <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="comboPooledDataSource"></property>
+<!--        配置别名映射-->
+        <property name="typeAliasesPackage" value="vip.epss.domain"></property>
+    </bean>
+<!--    3 让Spring配置可以扫描到的mapper文件,让MyBties可以扫描并匹配-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="vip.epss.dao"></property>
+    </bean>
+
+</beans>

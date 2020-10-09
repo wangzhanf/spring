@@ -514,5 +514,5 @@ spring 5.1.X   和   com.mchange的c3p0 的  0.9.5.2 可以匹配工作
 
 
 课堂任务:最简答的CRUD操作
-1.三层结构(表现,业务spring(mybatis-spring),持久mybatis+mysql驱动+C3P0), 导入相关的依赖包
+1.三层结构(表现,业务spring(mybatis-spring),持久mybatis+mysql驱动+C3P0), 导入相关的依赖包 ,创建结构
 2.
