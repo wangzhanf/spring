@@ -20,9 +20,14 @@ public class AccountController {
 
     @Test
     public void testTranser(){
-        Account zs = new Account(1, "zs", 999.99);
-        Account ls = new Account(2, "ls", 9.99);
-        if(accountService.transfer(zs,ls)){
+//        Account zs = new Account(1, "zs", 999.99);
+//        Account ls = new Account(2, "ls", 9.99);
+
+        Account src = accountService.selectByAid(1);
+        System.out.println("src~~~~~~"+src);
+        Account dist = accountService.selectByAid(2);
+
+        if(accountService.transfer(src,dist)){
             System.out.println("转账成功");
         }else{
             System.out.println("转账失败");

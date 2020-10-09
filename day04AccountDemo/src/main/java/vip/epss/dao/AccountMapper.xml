@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+dao层接口和mapper文件一般都是同名
+    AccountMapper.xml           接口文件应该是    AccountMapper.java
+    mapper文件中的namespace属性指向 接口
+    id指向 接口中的方法[id值和接口中的方法名相同]
+    parameterType  就是方法的形参
+    resultType   就是方法的返回值,如果是集合类型,使用元素类型表示
+-->
+
+<mapper namespace="vip.epss.dao.AccountMapper">
+
+    <!--
+    可以通过 ${}     #{}   表达式调用传递过来的变量
+    ${}  原始输入    不能防止Sql注入
+    建议使用   #{}   防sql注入攻击
+    使用#{}方式的时候,如果输入参数是一个8+1类型, 变量名随意,一般建议使用value
+    如果传入的参数是对象   通过对象表示法访问     car.wheel
+    -->
+    <update id="update" parameterType="vip.epss.domain.Account">
+        update account set aname=#{aname},money=#{balance} where aid=#{aid}
+    </update>
+
+    <select id="selectByAid" resultType="Account">
+        select aid as aid,aname as aname,money as balance from account where aid=#{myaid}
+    </select>
+
+<!--    <resultMap id="AccountResultMap" type="Account">-->
+<!--&lt;!&ndash;        主键的映射使用id,其他字段映射使用result-->
+<!--        column对应的是数据查询时的临时字段名-->
+<!--&ndash;&gt;-->
+<!--        <id property="aid" column="aid"></id>-->
+<!--        <result property="aname" column="aname"></result>-->
+<!--        <result property="balance" column="money"></result>-->
+<!--    </resultMap>-->
+</mapper>

@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
 
-<!--    java版本约束-->
+    <!--    java版本约束-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -18,23 +18,23 @@
         <spring.version>5.1.8.RELEASE</spring.version>
     </properties>
 
-<!--    导入依赖包-->
+    <!--    导入依赖包-->
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework</groupId>-->
-        <!--            <artifactId>spring-jdbc</artifactId>-->
-        <!--            <version>${spring.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework</groupId>-->
-        <!--            <artifactId>spring-tx</artifactId>-->
-        <!--            <version>${spring.version}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -77,7 +77,7 @@
     </dependencies>
 
 
-<!--    发布mapper资源-->
+    <!--    发布mapper资源-->
     <build>
         <!--    发布资源-->
         <resources>

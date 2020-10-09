@@ -24,4 +24,11 @@ public class AccountServiceImpl implements AccountService {
         accountMapper.update(dist);
         return true;
     }
+
+    @Override
+    public Account selectByAid(Integer aid) {
+        Account account = accountMapper.selectByAid(aid);
+        System.out.println("account================="+account);
+        return account;
+    }
 }
