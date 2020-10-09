@@ -512,3 +512,7 @@ spring 5.1.X   和   com.mchange的c3p0 的  0.9.5.2 可以匹配工作
 网上商城系统的后台实现:   订单,商品,商品种类,用户表
                     (通过resultType,通过resultMap实现)
 
+
+课堂任务:最简答的CRUD操作
+1.三层结构(表现,业务spring(mybatis-spring),持久mybatis+mysql驱动+C3P0), 导入相关的依赖包
+2.
