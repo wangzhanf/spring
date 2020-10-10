@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import vip.epss.domain.Account;
 import vip.epss.service.AccountService;
 
+import java.util.List;
+
 //Account的controller,
 @Controller
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,6 +34,15 @@ public class AccountController {
             System.out.println("转账成功");
         }else{
             System.out.println("转账失败");
+        }
+    }
+
+    @Test
+    public void testFindAllAccount(){
+        List<Account> accounts = accountService.selectAll();
+        for (Account account:accounts
+             ) {
+            System.out.println(account);
         }
     }
 }

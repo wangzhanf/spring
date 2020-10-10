@@ -7,6 +7,8 @@ import vip.epss.dao.AccountMapper;
 import vip.epss.domain.Account;
 import vip.epss.service.AccountService;
 
+import java.util.List;
+
 //实现对应的servcie接口
 //@Component   @Controller   @Service   @Repository
 @Service(value = "accountService")
@@ -30,5 +32,10 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountMapper.selectByAid(aid);
         System.out.println("account================="+account);
         return account;
+    }
+
+    @Override
+    public List<Account> selectAll() {
+        return accountMapper.selectAll();
     }
 }

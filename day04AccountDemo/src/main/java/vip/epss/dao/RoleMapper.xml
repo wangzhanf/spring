@@ -11,7 +11,7 @@ dao层接口和mapper文件一般都是同名
     resultType   就是方法的返回值,如果是集合类型,使用元素类型表示
 -->
 
-<mapper namespace="vip.epss.dao.AccountMapper">
+<mapper namespace="vip.epss.dao.RoleMapper">
 
     <!--
     可以通过 ${}     #{}   表达式调用传递过来的变量
@@ -20,35 +20,36 @@ dao层接口和mapper文件一般都是同名
     使用#{}方式的时候,如果输入参数是一个8+1类型, 变量名随意,一般建议使用value
     如果传入的参数是对象   通过对象表示法访问     car.wheel
     -->
-    <update id="update" parameterType="vip.epss.domain.Account">
-        update account set aname=#{aname},money=#{balance} where aid=#{aid}
-    </update>
 
-    <select id="selectByAid" resultMap="AccountResultMap">
-        select * from account
-left join user on account.fuid = user.uid
-where account.aid=#{aid}
-    </select>
+    <delete id="deleteByRid">
+        delete from role where rid=#{rid}
+    </delete>
 
-    <select id="selectAll" resultMap="AccountResultMap">
+    <delete id="deleteUrByFrid">
+        delete from user2role where frid=#{frid}
+    </delete>
+
+    <select id="selectAll" resultMap="RoleResultMap">
 --         先写静态代码然后再填充
-select * from account
-left join user on account.fuid = user.uid
+select r.rid,r.rname,r.rdes,u.uid,u.username,u.password from role r
+left join user2role ur on r.rid = ur.frid
+left join user u on ur.fuid = u.uid
     </select>
 
-        <resultMap id="AccountResultMap" type="Account">
+        <resultMap id="RoleResultMap" type="vip.epss.domain.Role">
+            <id property="rid" column="rid"></id>
+            <result property="rname" column="rname"></result>
+            <result property="rdes" column="rdes"></result>
+            <collection property="users" ofType="vip.epss.domain.User">
+                <id property="uid" column="uid"></id>
+                <result property="username" column="username"></result>
+                <result property="password" column="password"></result>
+            </collection>
     <!--        主键的映射使用id,其他字段映射使用result
             column对应的是数据查询时的临时字段名
             如果映射对象是一个简单对象,使用association + javaType
             如果映射对象是一个集合,使用collection
     -->
-            <id property="aid" column="aid"></id>
-            <result property="aname" column="aname"></result>
-            <result property="balance" column="money"></result>
-            <association property="user" javaType="vip.epss.domain.User">
-                <id property="uid" column="fuid"></id>
-                <result property="username" column="username"></result>
-                <result property="password" column="password"></result>
-            </association>
+
         </resultMap>
 </mapper>
