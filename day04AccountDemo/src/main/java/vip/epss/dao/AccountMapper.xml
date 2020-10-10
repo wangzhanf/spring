@@ -28,12 +28,18 @@ dao层接口和mapper文件一般都是同名
         select aid as aid,aname as aname,money as balance from account where aid=#{myaid}
     </select>
 
-<!--    <resultMap id="AccountResultMap" type="Account">-->
-<!--&lt;!&ndash;        主键的映射使用id,其他字段映射使用result-->
-<!--        column对应的是数据查询时的临时字段名-->
-<!--&ndash;&gt;-->
-<!--        <id property="aid" column="aid"></id>-->
-<!--        <result property="aname" column="aname"></result>-->
-<!--        <result property="balance" column="money"></result>-->
-<!--    </resultMap>-->
+    <select id="selectAll" resultType="Account">
+--         先写静态代码然后再填充
+select * from account
+left join user on account.fuid = user.uid
+    </select>
+
+    <!--    <resultMap id="AccountResultMap" type="Account">-->
+    <!--&lt;!&ndash;        主键的映射使用id,其他字段映射使用result-->
+    <!--        column对应的是数据查询时的临时字段名-->
+    <!--&ndash;&gt;-->
+    <!--        <id property="aid" column="aid"></id>-->
+    <!--        <result property="aname" column="aname"></result>-->
+    <!--        <result property="balance" column="money"></result>-->
+    <!--    </resultMap>-->
 </mapper>

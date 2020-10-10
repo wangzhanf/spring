@@ -208,19 +208,20 @@ JDK的版本配置
     三层结构(表现层,service,dao)
     
     
-   
-   
+
+
 #  向Bean注入数据的方式
     构造方法注入:<constructor-arg>
     setter方法注入:<property>
-    
-    
-    
+
+
+​    
+​    
 # Spring整合junit进行单元测试
  1  导入  spring-test
  2 编写测试类   
- 
- 
+
+
  # 注入各种类型参数
  1 创建一个module
  2 修改pom文件
@@ -516,3 +517,58 @@ spring 5.1.X   和   com.mchange的c3p0 的  0.9.5.2 可以匹配工作
 课堂任务:最简答的CRUD操作
 1.三层结构(表现,业务spring(mybatis-spring),持久mybatis+mysql驱动+C3P0), 导入相关的依赖包 ,创建结构
 2.
+
+
+
+
+
+
+
+# MyBatis的查询
+
+项目过程中大部分的应用都是查询
+
+CUD都需要手动提交,  openSession通过传递boolean值  true可以设置session为自动提交(只针对于CUD)
+
+查仅仅是读取:对于查询操作关键在于对象的组装,查询的数据如果多次使用需要使用缓存机制
+
+查找一个用户的所有订单,用户在浏览站点的时候多次调用,需要使用到缓存机制
+
+## 关联查询
+
+数据库范式[范式级别越高数据冗余度越低,消耗资源越多]
+
+一对一[用户登录表uid,uname和用户信息表userinfoid,userinfoImage,uid]
+
+一对多[一个用户uid可能有多个订单(orderId,xxxxx,uid)
+
+多对一[多个订单属于一个用户]
+
+多对多[学生和老师的关系]      stuid,stuname        {stuid    teacherid }      teacherid   teachername
+
+指导原则:
+
+​	在数据表中的表现是通过主键和外键关联
+
+​	多对多关系,需要使用中间表关联
+
+​	实体类中,对象中包含对应对象的引用或者对应对象的集合
+
+​	如果使用ORM的框架,myBaits使用resultMap进行映射
+
+
+
+## 代码示例:一对一映射
+
+一个用户有多个账号
+
+1 创建用户实体类和数据表
+
+2 修改dao的接口xml文件
+
+3 修改service
+
+​	
+
+
+

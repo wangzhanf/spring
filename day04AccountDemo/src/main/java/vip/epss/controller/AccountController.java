@@ -24,6 +24,7 @@ public class AccountController {
 //        Account ls = new Account(2, "ls", 9.99);
 
         Account src = accountService.selectByAid(1);
+        src.setAname("新名字");
         System.out.println("src~~~~~~"+src);
         Account dist = accountService.selectByAid(2);
 
