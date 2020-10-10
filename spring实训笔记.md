@@ -544,19 +544,19 @@ CUD都需要手动提交,  openSession通过传递boolean值  true可以设置se
 
 多对一[多个订单属于一个用户]
 
-多对多[学生和老师的关系]      stuid,stuname        {stuid    teacherid }      teacherid   teachername
+多对多[学生和老师的关系]      stuid,stuname       中间表 {stuid    teacherid }      teacherid   teachername
 
 指导原则:
 
 ​	在数据表中的表现是通过主键和外键关联
 
-​	多对多关系,需要使用中间表关联
+​	多对多关系,需要使用中间表关联,中间表不需要实体类对应
 
 ​	实体类中,对象中包含对应对象的引用或者对应对象的集合
 
 ​	如果使用ORM的框架,myBaits使用resultMap进行映射
 
-
+​	
 
 ## 代码示例:一对一映射
 
@@ -568,7 +568,36 @@ CUD都需要手动提交,  openSession通过传递boolean值  true可以设置se
 
 3 修改service
 
-​	
+4 修改controller的测试方法
 
 
 
+
+
+## 代码示例:一对多
+
+查阅一个用户的多个账号信息
+
+1 修改实体类,添加集合引用
+
+2 创建mapper文件和接口文件	
+
+3 修改service
+
+4 实现controller层
+
+
+
+## 代码示例:多对多
+
+用户的多种角色分配
+
+1 创建一个角色实体,数据表
+
+2 创建实体类[多对多的本质是双向的一对多]
+
+
+
+
+
+要求: 创建一个用户的时候创建一条用户信息记录.
