@@ -601,3 +601,27 @@ CUD都需要手动提交,  openSession通过传递boolean值  true可以设置se
 
 
 要求: 创建一个用户的时候创建一条用户信息记录.
+
+
+
+
+
+# SQL中文乱码问题[报错]
+
+1,创建数据库时使用
+
+```sql
+create database java6 default character set 'utf8';
+```
+
+2 创建数据表时添加
+
+```
+default character set 'utf8'
+```
+
+3 传输出现乱码,数据库的链接URL
+
+```
+jdbc:mysql://localhost:3306/java6?useUnicode=true&amp;characterEncoding=utf8
+```
