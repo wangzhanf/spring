@@ -29,6 +29,10 @@ dao层接口和mapper文件一般都是同名
         delete from user2role where frid=#{frid}
     </delete>
 
+<!--    <select id="selectCondition" parameterType="map">-->
+<!--        select * from role where rid > #{min} and rid &lt; #{max}-->
+<!--    </select>-->
+
     <select id="selectAll" resultMap="RoleResultMap">
 --         先写静态代码然后再填充
 select r.rid,r.rname,r.rdes,u.uid,u.username,u.password from role r

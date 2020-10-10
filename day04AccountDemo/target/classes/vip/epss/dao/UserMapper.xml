@@ -21,6 +21,11 @@ dao层接口和mapper文件一般都是同名
     如果传入的参数是对象   通过对象表示法访问     car.wheel
     -->
 
+<!--    默认情况下insert返回的整数是插入的记录条目数,如果使用了useGeneratedKeys返回主键,则返回值为最后插入记录的主键值-->
+<!--    <insert id="inser" parameterType="User" useGeneratedKeys="true" keyColumn="uid">-->
+<!--        insert into xxxx-->
+<!--    </insert>-->
+
     <select id="selectByUid" resultMap="UserResultMap">
 select u.uid,u.username,u.password,a.aid,a.aname,a.money from user u
 left join account a on u.uid = a.fuid

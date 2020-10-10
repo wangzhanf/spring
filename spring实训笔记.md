@@ -625,3 +625,52 @@ default character set 'utf8'
 ```
 jdbc:mysql://localhost:3306/java6?useUnicode=true&amp;characterEncoding=utf8
 ```
+
+
+
+# 分页查询
+
+本质就是查询指定数量指定位置的记录
+
+1 引入依赖包
+
+```xml
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+```
+
+2 修改 spring的主配置文件
+
+```xml
+<!--        配置pageHelper-->
+        <property name="plugins">
+<!--            配置pagehelper的拦截器-->
+            <bean class="com.github.pagehelper.PageHelper">
+                <property name="properties">
+                    <props>
+<!--                        数据库方言-->
+                        <prop key="helperDialect">mysql</prop>
+<!--                        页码合理化,负页则为1,无限大值为最大页码数-->
+                        <prop key="reasonable">true</prop>
+                    </props>
+                </property>
+            </bean>
+        </property>
+    </bean>
+```
+
+3 controller层代码引用封装
+
+```java
+//分页插件的初始化 pn 当前页码数,   每页的记录数
+        PageHelper.startPage(1, 8);
+
+        List<Role> roles = roleService.selectAll();
+        //将获取到的记录集合封装到pageInfo对象中
+        PageInfo<Role>  pageInfo = new PageInfo<>(roles);
+```
+

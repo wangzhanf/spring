@@ -6,6 +6,7 @@ import vip.epss.dao.RoleMapper;
 import vip.epss.domain.Role;
 import vip.epss.service.RoleService;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service(value = "roleService")
@@ -20,8 +21,14 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Integer deleteByRid(Integer rid) {
+
+//        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+//        stringIntegerHashMap.put("min",5);
+//        stringIntegerHashMap.put("max",8);
         roleMapper.deleteUrByFrid(rid);
         return roleMapper.deleteByRid(rid);
+
+
 
     }
 }

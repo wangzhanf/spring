@@ -1,5 +1,7 @@
 package vip.epss.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,19 @@ public class RoleController {
     private RoleService roleService;
 
     @Test
-    public void testRoleSelectOne(){
+    public void testRoleSelectAll(){
+        //分页插件的初始化 pn 当前页码数,   每页的记录数
+        PageHelper.startPage(1, 3);
+//查询第3页
         List<Role> roles = roleService.selectAll();
-        for (Role role:roles
-             ) {
-            System.out.println(role);
-        }
+        //将获取到的记录集合封装到pageInfo对象中
+        PageInfo<Role>  pageInfo = new PageInfo<>(roles);
+        //return pageInfo;
+        System.out.println(pageInfo);
+//        for (Role role:roles
+//             ) {
+//            System.out.println(role);
+//        }
     }
 
     @Test
