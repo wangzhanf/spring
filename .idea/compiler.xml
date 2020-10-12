@@ -2,23 +2,27 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="day02InArgs" />
-        <module name="day03MyBatisDemo1" />
-        <module name="mybatisGenerator" />
-        <module name="day03Demo" />
-        <module name="day03001DiDemo" />
-        <module name="DiDemo" />
-        <module name="genKey" />
-        <module name="testDemo" />
+        <module name="newMybatisGenerator" />
         <module name="day04AccountDemo" />
+        <module name="day03001DiDemo" />
+        <module name="mybatisGenerator" />
+        <module name="genKey" />
+        <module name="day03MyBatisDemo1" />
+        <module name="testDemo" />
+        <module name="day03Demo" />
+        <module name="DiDemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
+      <module name="day01002FirstSpring" target="11" />
+      <module name="day01003secondSpring" target="11" />
+      <module name="day02001spring" target="11" />
+      <module name="day02002DiDemo" target="11" />
       <module name="day02InArgs" target="11" />
       <module name="day03001DiDemo" target="11" />
       <module name="day03Demo" target="11" />
@@ -27,6 +31,7 @@
       <module name="DiDemo" target="11" />
       <module name="genKey" target="11" />
       <module name="mybatisGenerator" target="11" />
+      <module name="newMybatisGenerator" target="11" />
       <module name="testDemo" target="11" />
     </bytecodeTargetLevel>
   </component>

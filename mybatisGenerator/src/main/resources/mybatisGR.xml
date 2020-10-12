@@ -4,12 +4,16 @@
     <!--  <properties resource="mybatis.properties" />
          -->
 <!--    引入的jar包-->
-<!--    <classPathEntry location="该jar包的位置\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar" />-->
+    <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar" />
     <context id="msqlTables" targetRuntime="MyBatis3">
-<!--        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
 <!--        配置数据库连接-->
-        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/java6"
-                        driverClass="com.mysql.jdbc.Driver" password="mysql" userId="root">
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/java6?serverTimezone=Asia/Shanghai&amp;unicode=true&amp;characterEncoding=UTF-8"
+                        driverClass="com.mysql.cj.jdbc.Driver" password="P@ssw0rd" userId="root">
 
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
@@ -18,17 +22,17 @@
             <property name="forceBigDecimals" value="true" />
         </javaTypeResolver>
 <!--        实体类-->
-        <javaModelGenerator targetPackage="vip.epss.domain" targetProject=".\src\main\java">
+        <javaModelGenerator targetPackage="vip.epss.domain" targetProject="D:\work\东软课程\东软 社招_2020_JAVA_6班\spring\mybatisGenerator\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <!-- 从数据库返回的值被清理前后的空格  -->
-            <property name="trimStrings" value="false" />
+            <property name="trimStrings" value="true" />
         </javaModelGenerator>
 <!--        mapper接口 文件的配置-->
-        <sqlMapGenerator targetPackage="vip.epss.dao" targetProject=".\src\main\java">
-            <property name="enableSubPackages" value="false"/>
+        <sqlMapGenerator targetPackage="vip.epss.dao" targetProject="D:\work\东软课程\东软 社招_2020_JAVA_6班\spring\mybatisGenerator\src\main\java">
+            <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--        mapperXML文件位置 文件的配置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.epss.dao" targetProject=".\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.epss.dao" targetProject="D:\work\东软课程\东软 社招_2020_JAVA_6班\spring\mybatisGenerator\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
