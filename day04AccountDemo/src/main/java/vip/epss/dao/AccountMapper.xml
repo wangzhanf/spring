@@ -24,11 +24,19 @@ dao层接口和mapper文件一般都是同名
         update account set aname=#{aname},money=#{balance} where aid=#{aid}
     </update>
 
-    <select id="selectByAid" resultMap="AccountResultMap">
-        select * from account
-left join user on account.fuid = user.uid
-where account.aid=#{aid}
+    <select id="selectByAid" resultMap="AccountResultLazyMap">
+        select * from account  where aid=#{aid}
     </select>
+    <resultMap id="AccountResultLazyMap" type="Account">
+        <id property="aid" column="aid"></id>
+        <result property="aname" column="aname"></result>
+        <result property="balance" column="money"></result>
+        <result property="fuid" column="fuid"></result>
+
+        <association property="user" javaType="User"
+            select="vip.epss.dao.UserMapper.selectByUidOne"  column="fuid">
+        </association>
+    </resultMap>
 
     <select id="selectAll" resultMap="AccountResultMap">
 --         先写静态代码然后再填充

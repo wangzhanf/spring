@@ -1,3 +1,7 @@
+---
+typora-copy-images-to: spring实训笔记.assets
+---
+
 # 基本环境的准备
 
 ## 基本环境
@@ -628,7 +632,7 @@ jdbc:mysql://localhost:3306/java6?useUnicode=true&amp;characterEncoding=utf8
 
 
 
-# 分页查询
+# 分页查询[通过拦截器实现]
 
 本质就是查询指定数量指定位置的记录
 
@@ -649,7 +653,7 @@ jdbc:mysql://localhost:3306/java6?useUnicode=true&amp;characterEncoding=utf8
 <!--        配置pageHelper-->
         <property name="plugins">
 <!--            配置pagehelper的拦截器-->
-            <bean class="com.github.pagehelper.PageHelper">
+            <bean class="com.github.pagehelper.PageInterceptor">
                 <property name="properties">
                     <props>
 <!--                        数据库方言-->
@@ -673,4 +677,42 @@ jdbc:mysql://localhost:3306/java6?useUnicode=true&amp;characterEncoding=utf8
         //将获取到的记录集合封装到pageInfo对象中
         PageInfo<Role>  pageInfo = new PageInfo<>(roles);
 ```
+
+
+
+mybatis建议使用  3.5.3
+
+
+
+# 运行的状态需要详细了解
+
+传统使用的是控制台输出
+
+使用日志方式
+
+日志使用时候注意:   日志门面(接口) 和 日志实现(实现类)
+
+推荐使用log4j
+
+
+
+
+
+
+
+
+
+# 案例:懒加载
+
+## 1 引入日志依赖  log4j
+
+## 2 编写日志文件 log4j.properties
+
+## 3 创建mybatis的配置文件,mybatis.xml ,编写懒加载等设置
+
+## 4  在spring的主配置文件中加载mybatis的配置文件
+
+## 5 编写mapper的接口和xml文件   通过asscocation+javaType,实现懒加载过程
+
+
 

@@ -27,4 +27,12 @@ public class UserController {
         User user = userService.selectOne(1);
         System.out.println(user);
     }
+
+
+
+    @Test
+    public void testUserSelectByUidOne(){
+        User user = userService.selectByUidOne(1);
+        System.out.println(user);
+    }
 }

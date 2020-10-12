@@ -22,8 +22,8 @@
 <!--    2 由Spring去管理SqlSessionFactory的创建-->
     <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="comboPooledDataSource"></property>
-<!--        配置别名映射-->
-        <property name="typeAliasesPackage" value="vip.epss.domain"></property>
+<!--加载mybatis的主配置文件-->
+        <property name="configLocation" value="mybatis.xml"></property>
 
 <!--        配置pageHelper-->
         <property name="plugins">

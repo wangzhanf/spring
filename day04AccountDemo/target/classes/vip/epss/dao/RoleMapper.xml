@@ -40,7 +40,7 @@ left join user2role ur on r.rid = ur.frid
 left join user u on ur.fuid = u.uid
     </select>
 
-        <resultMap id="RoleResultMap" type="vip.epss.domain.Role">
+        <resultMap id="RoleResultMap" type="Role">
             <id property="rid" column="rid"></id>
             <result property="rname" column="rname"></result>
             <result property="rdes" column="rdes"></result>

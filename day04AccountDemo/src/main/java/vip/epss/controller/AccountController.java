@@ -45,4 +45,10 @@ public class AccountController {
             System.out.println(account);
         }
     }
+
+    @Test
+    public void testFindAidAccount(){
+        Account account1 = accountService.selectByAid(1);
+        System.out.println(account1.getAname());
+    }
 }

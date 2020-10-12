@@ -7,7 +7,7 @@
 
     <bean id="userService" class="vip.epss.service.UserServiceImpl">
         <!--            通过构造函数的方式注入属性使用constructor-arg-->
-<!--                    <constructor-arg name="userDao" ref="userDao"></constructor-arg>-->
+        <!--                    <constructor-arg name="userDao" ref="userDao"></constructor-arg>-->
         <!--            还可以通过property的方式注入,本质上调用的是setter方法注入-->
         <property name="userDao" ref="userDao"></property>
     </bean>

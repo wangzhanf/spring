@@ -32,6 +32,10 @@ left join account a on u.uid = a.fuid
 where uid=#{uid}
     </select>
 
+    <select id="selectByUidOne" resultType="User">
+select * from user where uid=#{fuid}
+    </select>
+
 
 
         <resultMap id="UserResultMap" type="User">

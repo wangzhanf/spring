@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByUid(uid);
     }
 
+    @Override
+    public User selectByUidOne(Integer uid) {
+        return userMapper.selectByUidOne(uid);
+    }
+
 //    @Override
 //    public Integer insert(User user) {
 //        //先插入用户,然后才能插入用户信息,用户信息中的fuid关联到user表的uid

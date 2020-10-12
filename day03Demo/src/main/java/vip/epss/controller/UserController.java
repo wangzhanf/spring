@@ -17,10 +17,10 @@ import java.util.List;
 
 //@Component
 @Controller
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class UserController {
-    @Autowire@RunWith(SpringJUnit4ClassRunner.class)
-    @ContextConfiguration(locations = {"classpath:applicationContext.xml"})d
+    @Autowired
     private UserService userService;
 
 

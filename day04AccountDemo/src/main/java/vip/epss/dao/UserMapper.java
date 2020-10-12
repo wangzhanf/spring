@@ -7,6 +7,7 @@ import vip.epss.domain.User;
 public interface UserMapper {
     //查询用户信息,根据uid查询,携带账号信息
     public User selectByUid(Integer uid);
+    public User selectByUidOne(Integer uid);
     //插入一个新用户
 //    public Integer insert(User user);
 }
