@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--  <properties resource="mybatis.properties" />
+         -->
+<!--    引入的jar包-->
+<!--    <classPathEntry location="该jar包的位置\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar" />-->
+    <context id="msqlTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+<!--        配置数据库连接-->
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/java6"
+                        driverClass="com.mysql.jdbc.Driver" password="mysql" userId="root" >
+
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+<!--        强制类型转换-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+<!--        实体类-->
+        <javaModelGenerator targetPackage="vip.epss.domain" targetProject=".\src">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+<!--        mapper接口 文件的配置-->
+        <sqlMapGenerator targetPackage="vip.epss.dao" targetProject=".\src">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--        mapperXML文件位置 文件的配置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.epss.dao" targetProject=".\src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--数据库表生成-->
+        <table tableName="user" domainObjectName="User">
+        </table>
+        <table tableName="userinfo" domainObjectName="Userinfo">
+        </table>
+    </context>
+</generatorConfiguration>

@@ -32,15 +32,10 @@ public class TestMybatisCache {
         user.setPassword("abcd");
         mapper1.insert(user);
         //此时,一级缓存已经被清空,下面的查询语句将会重新查询数据库
-
-
         //
-
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         mapper1.selectByUid(1);
     }
-
-
     @Test
     public void testSecondLevelCache() throws IOException {
         //1 加载配置文件

@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="day02InArgs" />
         <module name="day03MyBatisDemo1" />
+        <module name="mybatisGenerator" />
         <module name="day03Demo" />
         <module name="day03001DiDemo" />
         <module name="DiDemo" />
@@ -18,10 +19,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
-      <module name="day01002FirstSpring" target="11" />
-      <module name="day01003secondSpring" target="11" />
-      <module name="day02001spring" target="11" />
-      <module name="day02002DiDemo" target="11" />
       <module name="day02InArgs" target="11" />
       <module name="day03001DiDemo" target="11" />
       <module name="day03Demo" target="11" />
@@ -29,6 +26,7 @@
       <module name="day04AccountDemo" target="11" />
       <module name="DiDemo" target="11" />
       <module name="genKey" target="11" />
+      <module name="mybatisGenerator" target="11" />
       <module name="testDemo" target="11" />
     </bytecodeTargetLevel>
   </component>

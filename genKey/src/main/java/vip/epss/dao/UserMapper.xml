@@ -26,4 +26,20 @@ dao层接口和mapper文件一般都是同名
         select * from user where uid=#{uid}
     </select>
 
+
+    <select id="selectByCondition" parameterType="map" resultType="user">
+        select * from user where uid in
+        <if test="#{passmin} != null">
+            and pass > #{passmin}
+        </if>
+        <if test="#{usermin} != null">
+            and username > #{usermin}
+        </if>
+    </select>
+
+<!--
+if根据测试条件实现拼接
+-->
+
+
 </mapper>
