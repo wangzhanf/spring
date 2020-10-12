@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vip.epss.dao.UserinfoMapper">
+    <insert id="insert" parameterType="Userinfo">
+        insert into userinfo(phone,email,fuid) value (#{phone},#{email},#{fuid})
+    </insert>
+
+    <!--    删除userinfo的一条记录,根据fuid删除-->
+    <delete id="delete">
+        delete from userinfo where fuid=#{fuid}
+    </delete>
+
+    <!--    根据外键获取信息记录-->
+    <select id="selectByUiid" resultMap="UserinfoResultWithUser">
+        select * from userinfo where uiid=#{uiid}
+    </select>
+    <resultMap id="UserinfoResultWithUser" type="userinfo">
+        <id property="uiid" column="uiid"></id>
+        <result property="phone" column="phone"></result>
+        <result property="email" column="email"></result>
+        <result property="fuid" column="fuid"></result>
+        <association property="user" javaType="User" select="vip.epss.dao.UserMapper.selectByUid"
+                     column="fuid"></association>
+    </resultMap>
+</mapper>

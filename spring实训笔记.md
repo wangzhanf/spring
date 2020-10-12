@@ -698,6 +698,33 @@ mybatis建议使用  3.5.3
 
 
 
+# 懒得重复编写setter和getter时可以使用lombok
+
+1 引入依赖包
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+```
+
+2 给实体类添加注解
+
+```java
+@Data
+//@Setter
+//@Getter
+public class User implements Serializable {
+```
+
+3 idea中添加插件
+
+![1602474908852](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1602474908852.png)
+
 
 
 
