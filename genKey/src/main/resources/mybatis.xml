@@ -4,12 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--一般将settings需要设置的内容放在mybatis的配置文件中-->
 <configuration>
-    <settings>
-<!--        开启懒加载模式-->
-        <setting name="lazyLoadingEnabled" value="true"/>
-<!--        关闭实时加载-->
-    <setting name="aggressiveLazyLoading" value="false"/>
-    </settings>
+<!--    <settings>-->
+<!--&lt;!&ndash;        开启懒加载模式&ndash;&gt;-->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+<!--&lt;!&ndash;        关闭实时加载&ndash;&gt;-->
+<!--    <setting name="aggressiveLazyLoading" value="false"/>-->
+<!--    </settings>-->
     
     <typeAliases>
         <package name="vip.epss.domain"/>

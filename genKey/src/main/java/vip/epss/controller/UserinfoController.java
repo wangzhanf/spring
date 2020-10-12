@@ -24,7 +24,9 @@ public class UserinfoController {
     @Test
     public void testSelectWithLazyLoad(){
         Userinfo userinfo = userinfoService.selectByUiid(3);
-        System.out.println(userinfo);
+        System.out.println(userinfo.getPhone());
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println(userinfo.getUser().getUsername());
     }
 
 

@@ -13,6 +13,8 @@
     </delete>
 
     <!--    根据外键获取信息记录-->
+    <!--全局开启了二级缓存,单独关闭当前sql片段的二级缓存-->
+<!--    <select useCache="false" id="selectByUiid" resultMap="UserinfoResultWithUser">-->
     <select id="selectByUiid" resultMap="UserinfoResultWithUser">
         select * from userinfo where uiid=#{uiid}
     </select>

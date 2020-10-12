@@ -117,6 +117,17 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
+<!--使用第三方的二级缓存-->
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.10.1</version>
+        </dependency>
     </dependencies>
 
 

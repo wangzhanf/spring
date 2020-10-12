@@ -12,6 +12,7 @@ dao层接口和mapper文件一般都是同名
 -->
 
 <mapper namespace="vip.epss.dao.UserMapper">
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 <!--    获取刚插入记录的主键-->
     <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="uid">
         insert into user (username,password) value (#{username},#{password})

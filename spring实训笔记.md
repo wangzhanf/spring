@@ -743,3 +743,12 @@ public class User implements Serializable {
 
 
 
+# 缓存
+
+只针对于查询操作
+
+myBatis的缓存存在两种
+
+一级缓存: 作用域sqlSession, close或者 flush时清空[当执行CUD操作后也会清空]
+
+二级缓存:作用域 mapper
