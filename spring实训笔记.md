@@ -749,6 +749,148 @@ public class User implements Serializable {
 
 myBatis的缓存存在两种
 
-一级缓存: 作用域sqlSession, close或者 flush时清空[当执行CUD操作后也会清空]
+一级缓存: 作用域sqlSession, close或者 flush时清空[当执行CUD操作后也会清空],一级缓存无需配置自动开启[存在于同一方法栈的空间---内存-->适合于小型缓存]
 
-二级缓存:作用域 mapper
+二级缓存:作用域 mapper文件,   一般存储于硬盘空间, 缓存的快慢取决于IO的速度,二级缓存默认是关闭的,可以使用mybatis或者第三方的二级缓存,默认二级缓存不会自动添加内容,需要手动关闭上一次的session
+
+
+
+# 逆向工程
+
+目的:通过数据表按照ORM的思想自动生成对应的pojo(domain)   ,  mapper的接口    ,mapper的xml文件
+
+## 具体实现
+
+1 导入相应的依赖包
+
+```xml
+<!--    java版本约束-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+    </dependencies>
+```
+
+2 编写 运行文件
+
+```java
+package vip.epss.utils;
+
+
+import org.mybatis.generator.api.MyBatisGenerator;
+import org.mybatis.generator.config.Configuration;
+import org.mybatis.generator.config.xml.ConfigurationParser;
+import org.mybatis.generator.exception.XMLParserException;
+import org.mybatis.generator.internal.DefaultShellCallback;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MBGR {
+
+    public void generator() throws Exception {
+        List<String> warnings = new ArrayList<String>();
+        boolean overwrite = true;
+        // 指定配置文件
+        File configFile = new File("src/main/resources/mybatisGR.xml");
+        ConfigurationParser cp = new ConfigurationParser(warnings);
+        Configuration config = cp.parseConfiguration(configFile);
+        DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+        myBatisGenerator.generate(null);
+    }
+
+    // 执行main方法以生成代码
+    public static void main(String[] args) throws IOException, XMLParserException {
+        try {
+            MBGR mbgr = new MBGR();
+            mbgr.generator();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+}
+```
+
+
+
+3 编写配置文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--  <properties resource="mybatis.properties" />
+         -->
+<!--    引入的jar包-->
+<!--    <classPathEntry location="该jar包的位置\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar" />-->
+    <context id="msqlTables" targetRuntime="MyBatis3">
+<!--        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
+<!--        配置数据库连接-->
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/java6"
+                        driverClass="com.mysql.jdbc.Driver" password="mysql" userId="root">
+
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+<!--        强制类型转换-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+<!--        实体类-->
+        <javaModelGenerator targetPackage="vip.epss.domain" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+<!--        mapper接口 文件的配置-->
+        <sqlMapGenerator targetPackage="vip.epss.dao" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--        mapperXML文件位置 文件的配置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.epss.dao" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--数据库表生成-->
+        <table tableName="user" domainObjectName="User">
+        </table>
+        <table tableName="userinfo" domainObjectName="Userinfo">
+        </table>
+    </context>
+</generatorConfiguration>
+
+```
+
+## 总结问题
+
+1 在idea的module下创建时存在  不报错也不生成
+
+解决的办法:  所有的路径必须使用绝对路径[包括数据库驱动的路径]
+
+2 生成的注释过多,简化注释的输出
+
+3 生成的代码大而全,但是有可能不能满足多表联查的需要
