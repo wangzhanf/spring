@@ -17,7 +17,7 @@ public class MBGR {
     public void generator() throws Exception {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
-        File configFile = new File("D:\\work\\东软课程\\东软 社招_2020_JAVA_6班\\spring\\mybatisGenerator\\src\\main\\resources\\mybatisGR.xml");
+        File configFile = new File("D:\\wangzhanf\\spring\\mybatisGenerator\\src\\main\\resources\\mybatisGR.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
