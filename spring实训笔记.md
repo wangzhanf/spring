@@ -936,7 +936,7 @@ public class MBGR {
 
 
 
-今日作业:
+# 20201013今日作业:
 
 一对多的关联查询
 
@@ -952,12 +952,231 @@ public class MBGR {
 
 
 
+# 20201013课堂作业过程
+
+## 1 创建一个maven项目或者module
+
+![image-20201013211403085](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/image-20201013211403085.png)
+
+## 2 修改pom依赖文件,鉴于本案例需要整合以前所学的知识点,直接整合比较全面的依赖包
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>vip.epss</groupId>
+    <artifactId>homework20201013</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <!--        版本控制-->
+        <spring.version>5.1.8.RELEASE</spring.version>
+    </properties>
+
+    <dependencies>
+        <!--        导入spring的依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--        jdbc-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--        事务-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--        测试-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--        织入包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.12</version>
+        </dependency>
+        <!--        spring整合mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!--        数据库连接池-->
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+        <!--        导入连接MySQL数据库的驱动包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+        </dependency>
+        <!--        通过gav坐标的方式引入mybatis框架的包依赖-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+
+        <!--        mybatis的逆向工程-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+        <!--        导入单元测试junit的坐标-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--        日志功能-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <!--        简化实体类的编写-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+        </dependency>
+        <!--        分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.8</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--        项目发布时需要发布的资源-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <!--                    项目的XXXmapper.xml配置文件在dao包下,需要发布出去-->
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>
+
+```
+
+
+
+## 3 数据表的设计和编码
+
+```mysql
+use java6;
+drop table if exists shaccount;
+create table if not exists shaccount(
+  aid INTEGER auto_increment comment '上证账号id',
+  aname varchar(12) comment '上证账号name',
+  ainmarket date comment '注册时间',
+  primary key (`aid`)
+);
+commit ;
+insert into shaccount (aname, ainmarket) values ('sh001002','2002-12-31'),
+                                                ('sh001007','2003-2-5'),
+                                                ('sh002003','2004-2-27'),
+                                                ('sh002008','2005-4-1')
+                                                ;
+
+drop table if exists stockpool;
+create table if not exists stockpool(
+    sid INTEGER auto_increment comment '股票id',
+    sname varchar(12) comment '股票名称',
+    shold INTEGER comment '持有数量',
+    sprice DOUBLE comment '持有价格',
+    sintime DATETIME comment '买入时间',
+    faid INTEGER comment '持有者账号',
+    primary key (`sid`),
+    constraint `fk_stockpool_faid_to_shaccount_aid` foreign key stockpool(`faid`) references shaccount(`aid`)
+);
+commit ;
+
+insert into stockpool (sname, shold, sprice, sintime, faid) VALUES ('中国平安',200,65.56,'2020-2-12 10:30:55',1),
+                                                                   ('万科A',100,25.4,'2020-2-13 10:10:25',1),
+                                                                   ('工商银行',300,5.4,'2020-5-13 10:12:25',1),
+                                                                   ('工商银行',400,5.5,'2020-5-16 9:42:25',2),
+                                                                   ('工商银行',500,5.1,'2020-5-19 14:32:45',3)
+                                                                   ;
+
+```
+
+4 创建mybatis逆向工程所需要的配置文件[因为是在一个module中创建,所以注意路径问题]
+
+
+
+5 修改生成的实体类文件,使用lombok的注解方式,因为要使用到多表联查,所以在实体类中要注意对象的包含
+
+
+
+6 修改逆向工程生成的mapper接口文件和xml配置文件,此例中分别采用了关联查询和SQL连接查询的方式
+
+
+
+7 根据mapper接口临时直接编写service接口和实现类,记得自动注入mapper的bean
+
+
+
+8 编写controller,通过spring+junit的方式模拟Controller的方式,记得自动注入service的bean
+
+
+
+9创建测试包和测试用的配置文件,建议每个层次的代码都需要单独进行单元测试
+
+完成后项目的结构
+
+![image-20201014000525235](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/image-20201014000525235.png)
+
+
+
+
+
+
+
+
+
 通过spring配置AOP的事务增强
 
 1 引入依赖的jar包    spring-aop      ,aspect,    织入包   aspectjweaver
 
 2 修改spring的配置文件 事务声明( 需要依赖     jdbc    tx    )     
-
 
 
 
