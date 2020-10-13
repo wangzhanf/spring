@@ -88,6 +88,13 @@
     from userinfo
     where uiid = #{uiid,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByFuid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where fuid = #{fuid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from userinfo
     where uiid = #{uiid,jdbcType=INTEGER}

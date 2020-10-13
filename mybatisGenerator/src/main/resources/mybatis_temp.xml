@@ -4,9 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-<!--    全局开启二级缓存,也可以在具体的sql片段中关闭二级缓存-->
+    <!--    全局开启二级缓存,也可以在具体的sql片段中关闭二级缓存-->
     <settings>
         <setting name="cacheEnabled" value="true"/>
+
+        <!--        开启懒加载模式-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--        关闭实时加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
     <typeAliases>
         <package name="vip.epss.domain"/>
@@ -33,7 +38,7 @@
         <!--        如果使用如下方式,需要在pom.xml中发布资源-->
         <!--        <package name="vip.epss.dao"/>-->
         <!--        <mapper class="vip.epss.dao.UserMapper"></mapper>-->
-<!--        <mapper resource="vip/epss/dao/UserMapper.xml"></mapper>-->
+        <!--        <mapper resource="vip/epss/dao/UserMapper.xml"></mapper>-->
         <package name="vip.epss.dao"/>
     </mappers>
 </configuration>

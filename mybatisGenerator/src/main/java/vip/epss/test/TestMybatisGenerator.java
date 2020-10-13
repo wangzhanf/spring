@@ -7,11 +7,14 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import vip.epss.dao.UserMapper;
+import vip.epss.dao.UserinfoMapper;
 import vip.epss.domain.User;
 import vip.epss.domain.UserExample;
+import vip.epss.domain.UserinfoExample;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestMybatisGenerator {
@@ -56,5 +59,43 @@ public class TestMybatisGenerator {
         ) {
             System.out.println(user);
         }
+    }
+
+    //删除的案例
+    @Test
+    public void testDeleteByUid(){
+        //删除指定id的数据
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        List<Integer> uids = new ArrayList<>();
+        uids.add(10);
+        uids.add(12);
+        criteria.andUidIn(uids);
+        mapper.deleteByExample(userExample);
+    }
+
+    //删除的案例
+    @Test
+    public void testDeleteUserWithUserinfo(){
+        //删除指定id的数据
+        //假设要删除uid为9
+        Integer uid = 9;
+
+        UserinfoMapper userinfoMapper = sqlSession.getMapper(UserinfoMapper.class);
+        UserinfoExample userinfoExample = new UserinfoExample();
+        UserinfoExample.Criteria criteria = userinfoExample.createCriteria();
+        criteria.andFuidEqualTo(uid);
+        userinfoMapper.deleteByExample(userinfoExample);
+
+        mapper.deleteByPrimaryKey(uid);
+    }
+
+    //查询user的同时查询到对应的userinfo信息
+    @Test
+    public void testSelectUserAndUserinfo(){
+        User user = mapper.selectByPrimaryKeyWithUserinfo(11);
+        System.out.println(user.getUsername());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println(user.getUserinfo());
     }
 }

@@ -6,6 +6,14 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
+<!--查询时携带了userinfo信息-->
+  <resultMap id="BaseResultMapWithUserinfo" type="vip.epss.domain.User">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <association property="userinfo" javaType="vip.epss.domain.Userinfo" select="vip.epss.dao.UserinfoMapper.selectByFuid" column="uid"></association>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -82,7 +90,14 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+<!--查找一个用户携带userinfo信息-->
+  <select id="selectByPrimaryKeyWithUserinfo" parameterType="java.lang.Integer" resultMap="BaseResultMapWithUserinfo">
+    select
     <include refid="Base_Column_List" />
     from user
     where uid = #{uid,jdbcType=INTEGER}
