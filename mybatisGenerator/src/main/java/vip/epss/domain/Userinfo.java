@@ -12,5 +12,7 @@ public class Userinfo {
 
     private Integer fuid;
 
+    private User user;
+
 
 }

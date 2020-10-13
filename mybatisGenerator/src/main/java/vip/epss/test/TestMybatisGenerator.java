@@ -88,6 +88,9 @@ public class TestMybatisGenerator {
         userinfoMapper.deleteByExample(userinfoExample);
 
         mapper.deleteByPrimaryKey(uid);
+
+
+
     }
 
     //查询user的同时查询到对应的userinfo信息

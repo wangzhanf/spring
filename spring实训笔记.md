@@ -893,4 +893,74 @@ public class MBGR {
 
 2 生成的注释过多,简化注释的输出
 
+```xml
+<commentGenerator>
+<!--            压制所有的注释生成-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+```
+
+
+
 3 生成的代码大而全,但是有可能不能满足多表联查的需要
+
+
+
+
+
+# 课堂练习
+
+需要引入 lombok简化 setter等编写
+
+引入mybatis的测试程序,结合junit测试(@Before和@After)Example的使用
+
+
+
+需求:查找user时同时查找对应的userinfo信息(多表 1 对1 关系)
+
+目前的方法:
+
+1 使用join方式   [多个where连接]
+
+2 使用resultMap + select(对应知识点,懒加载)    
+
+​	
+
+使用懒加载的方式
+
+
+
+
+
+
+
+
+
+今日作业:
+
+一对多的关联查询
+
+使用spring的注入方式[使用spring接管mybatis的mapper的注入]
+
+编写业务类型:   一个股票账户持有的所有股票
+
+查询:
+
+查询账号的时候将该账号所有的股票信息展示
+
+查询某支股票的时候列出持有该股票用户的信息
+
+
+
+通过spring配置AOP的事务增强
+
+1 引入依赖的jar包    spring-aop      ,aspect,    织入包   aspectjweaver
+
+2 修改spring的配置文件 事务声明( 需要依赖     jdbc    tx    )     
+
+
+
+
+
+
+

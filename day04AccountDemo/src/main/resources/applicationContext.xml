@@ -2,10 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       https://www.springframework.org/schema/context/spring-context.xsd">
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 <!--    组件扫描的范围,扫描  -->
     <context:component-scan base-package="vip.epss"></context:component-scan>
@@ -44,5 +50,24 @@
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="vip.epss.dao"></property>
     </bean>
+<!--配置增强式事务-->
+<!--    事务管理器的Bean-->
+
+    <tx:advice id="advice" transaction-manager="transactionManager">
+        <tx:attributes>
+<!--            针对不同的方法使用不同的事务级别-->
+            <tx:method name="*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="select*" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+<!--    *   所有的返回值    不管什么方法,返回值任意
+com.baobao.service.MyBatisService   需要切入的方法
+
+    -->
+        <aop:pointcut id="insertService" expression="execution (* vip.epss.service.*.*Impl.*(..))"/>
+        <aop:advisor advice-ref="advice" pointcut-ref="insertService"/>
+    </aop:config>
 
 </beans>

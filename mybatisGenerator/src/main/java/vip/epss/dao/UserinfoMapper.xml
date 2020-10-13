@@ -6,6 +6,11 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="fuid" jdbcType="INTEGER" property="fuid" />
+    <association property="user" javaType="vip.epss.domain.User">
+      <id property="uid" column="uid"></id>
+      <result property="username" column="username"></result>
+      <result property="password" column="password"></result>
+    </association>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,6 +73,10 @@
   <sql id="Base_Column_List">
     uiid, phone, email, fuid
   </sql>
+
+  <sql id="Base_Column_List_With_User">
+    ui.uiid,ui.phone,ui.email,ui.fuid,u.uid,u.username,u.password
+  </sql>
   <select id="selectByExample" parameterType="vip.epss.domain.UserinfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -83,10 +92,11 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from userinfo
-    where uiid = #{uiid,jdbcType=INTEGER}
+    select
+    <include refid="Base_Column_List_With_User" />
+     from userinfo ui
+left join user u on ui.fuid =  u.uid
+where ui.uiid = #{uiid,jdbcType=INTEGER}
   </select>
 
   <select id="selectByFuid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
