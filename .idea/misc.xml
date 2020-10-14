@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/springmvcdemo001/springmvcdemo001" />
+  </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
@@ -21,6 +24,7 @@
         <option value="$PROJECT_DIR$/mybatisGenerator/pom.xml" />
         <option value="$PROJECT_DIR$/newMybatisGenerator/pom.xml" />
         <option value="$PROJECT_DIR$/homework20201013/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvcdemo001/springmvcdemo001/pom.xml" />
       </list>
     </option>
   </component>

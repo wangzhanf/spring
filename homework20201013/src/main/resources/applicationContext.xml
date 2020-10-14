@@ -18,11 +18,11 @@
 
     <!--    1 spring去接管mybatis的连接数据库的能力-->
     <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
         <property name="jdbcUrl"
-                  value="jdbc:mysql://localhost:3306/java6?serverTimezone=Asia/Shanghai&amp;unicode=true&amp;characterEncoding=UTF-8"></property>
+                  value="jdbc:mysql://localhost:3306/java6"></property>
         <property name="user" value="root"></property>
-        <property name="password" value="P@ssw0rd"></property>
+        <property name="password" value="mysql"></property>
 
         <property name="maxPoolSize" value="80"></property>
     </bean>

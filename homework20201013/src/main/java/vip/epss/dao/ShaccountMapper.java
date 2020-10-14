@@ -1,5 +1,6 @@
 package vip.epss.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import vip.epss.domain.Shaccount;
 import vip.epss.domain.ShaccountExample;
@@ -18,6 +19,7 @@ public interface ShaccountMapper {
     int insertSelective(Shaccount record);
 
     List<Shaccount> selectByExample(ShaccountExample example);
+    List<Shaccount> selectByExampleWithObject(ShaccountExample example);
 
     Shaccount selectByPrimaryKey(Integer aid);
 

@@ -35,5 +35,10 @@ public class ShaccountController {
             System.out.println(stockpool);
         }
     }
+
+    @Test
+    public void testDeleteShaccountWithStockpool(){
+        shaccountService.deleteByPrimaryKey(1);
+    }
 }
 

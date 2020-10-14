@@ -68,7 +68,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.16</version>
+            <version>5.1.47</version>
         </dependency>
         <!--        通过gav坐标的方式引入mybatis框架的包依赖-->
         <dependency>

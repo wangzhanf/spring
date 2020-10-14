@@ -3,8 +3,10 @@ package vip.epss.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vip.epss.dao.ShaccountMapper;
+import vip.epss.dao.StockpoolMapper;
 import vip.epss.domain.Shaccount;
 import vip.epss.domain.ShaccountExample;
+import vip.epss.domain.StockpoolExample;
 import vip.epss.service.ShaccountService;
 
 import java.util.List;
@@ -21,6 +23,9 @@ public class ShaccountServiceImpl implements ShaccountService {
     @Autowired
     private ShaccountMapper shaccountMapper;
 
+    @Autowired
+    private StockpoolMapper stockpoolMapper;
+
     @Override
     public long countByExample(ShaccountExample example) {
         return 0;
@@ -33,7 +38,13 @@ public class ShaccountServiceImpl implements ShaccountService {
 
     @Override
     public int deleteByPrimaryKey(Integer aid) {
-        return 0;
+        StockpoolExample stockpoolExample = new StockpoolExample();
+        StockpoolExample.Criteria criteria = stockpoolExample.createCriteria();
+        criteria.andFaidEqualTo(aid);
+        stockpoolMapper.deleteByExample(stockpoolExample);//删除从表
+//        System.out.println(12/0);
+        int i = shaccountMapper.deleteByPrimaryKey(aid);//删除主表
+        return i;
     }
 
     @Override
@@ -48,6 +59,11 @@ public class ShaccountServiceImpl implements ShaccountService {
 
     @Override
     public List<Shaccount> selectByExample(ShaccountExample example) {
+        return null;
+    }
+
+    @Override
+    public List<Shaccount> selectByExampleWithObject(ShaccountExample example) {
         return null;
     }
 

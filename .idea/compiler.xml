@@ -8,16 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="day02InArgs" />
+        <module name="day03MyBatisDemo1" />
+        <module name="springmvcdemo001" />
         <module name="newMybatisGenerator" />
-        <module name="day04AccountDemo" />
+        <module name="mybatisGenerator" />
+        <module name="day03Demo" />
         <module name="day03001DiDemo" />
         <module name="homework20201013" />
-        <module name="genKey" />
-        <module name="mybatisGenerator" />
-        <module name="day03MyBatisDemo1" />
-        <module name="testDemo" />
-        <module name="day03Demo" />
         <module name="DiDemo" />
+        <module name="genKey" />
+        <module name="day04AccountDemo" />
+        <module name="testDemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
@@ -35,6 +36,7 @@
       <module name="homework20201013" target="11" />
       <module name="mybatisGenerator" target="11" />
       <module name="newMybatisGenerator" target="11" />
+      <module name="springmvcdemo001" target="11" />
       <module name="testDemo" target="11" />
     </bytecodeTargetLevel>
   </component>

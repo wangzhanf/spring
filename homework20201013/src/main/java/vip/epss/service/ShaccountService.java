@@ -23,6 +23,7 @@ public interface ShaccountService {
     int insertSelective(Shaccount record);
 
     List<Shaccount> selectByExample(ShaccountExample example);
+    List<Shaccount> selectByExampleWithObject(ShaccountExample example);
 
     Shaccount selectByPrimaryKey(Integer aid);
 

@@ -190,6 +190,21 @@
         where aid = #{aid,jdbcType=INTEGER}
     </select>
 
+    <select id="selectByExampleWithObject" parameterType="vip.epss.domain.ShaccountExample" resultMap="BaseResultMapWithObject">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from shaccount
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
     <resultMap id="BaseResultMapWithObject" type="vip.epss.domain.Shaccount">
         <id column="aid" jdbcType="INTEGER" property="aid"/>
         <result column="aname" jdbcType="VARCHAR" property="aname"/>
