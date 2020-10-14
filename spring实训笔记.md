@@ -1140,7 +1140,7 @@ insert into stockpool (sname, shold, sprice, sintime, faid) VALUES ('中国平�
 
 4 创建mybatis逆向工程所需要的配置文件[因为是在一个module中创建,所以注意路径问题]
 
-
+逆向工程只是在项目初期使用一次,所以放在了test中
 
 5 修改生成的实体类文件,使用lombok的注解方式,因为要使用到多表联查,所以在实体类中要注意对象的包含
 
@@ -1180,6 +1180,60 @@ insert into stockpool (sname, shold, sprice, sintime, faid) VALUES ('中国平�
 
 
 
+
+
+
+
+# 创建第一个springMVC
+
+![1602646653173](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1602646653173.png)
+
+
+
+
+
+![1602646594161](spring%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0.assets/1602646594161.png)
+
+
+
+导入依赖
+
+
+
+```xml
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>${spring.version}</version>
+</dependency>
+
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>compile</scope>
+</dependency>
+
+```
+
+创建springMVC的配置文件
+
+
+
+修改web.xml
+
+
+
+创建Controller,
+
+
+
+修改springmvc的配置文件进行自动扫描
+
+
+
+部署Tomcat发布
 
 
 

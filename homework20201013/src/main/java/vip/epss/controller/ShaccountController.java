@@ -42,3 +42,4 @@ public class ShaccountController {
     }
 }
 
+//tomcat启动服务时加载spring的context
