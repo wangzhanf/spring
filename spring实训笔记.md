@@ -1237,3 +1237,55 @@ insert into stockpool (sname, shold, sprice, sintime, faid) VALUES ('中国平�
 
 
 
+MVC设计分离,表现层(springMVC)-->业务层(spring)-->持久层(MyBatis)
+
+
+
+
+
+
+
+Controller中方法的返回值
+
+void:
+
+将当前映射的路径作为视图名称
+
+方法中如果要使用servlet对象,应该如何处理
+
+1 引入依赖的包     servlet    jsp     jstl  
+
+```xml
+
+<!--    引入servlet相关依赖-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+<!--      已提供-->
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+```
+
+
+
+String
+
+
+
+{	
+
+​	username:"zs"
+
+}
+
