@@ -1289,3 +1289,85 @@ String
 
 }
 
+
+
+springMVC中
+
+@RequestMapping   [将虚拟的URL路径和(类)方法注册到 映射处理器 ]
+
+   value
+
+   method
+
+​	paras
+
+参数:
+
+pojo对象, 对象的属性是通过setter方法注入的,前端表单的组件名必须和实体类的属性名相同[表单中传递的数据都应该是字符串,springMVC提供了默认的数据类型转换, 特殊情况需要自定义转换]
+
+常见的Servlet对象:  controller   中的方法     methods1(HttpServletRequest  req)    需不需要在pom中引入servlet依赖[需要--provided]     ,   如果jsp页面中需要使用request对象,pom包需要引入吗(不需要)   
+
+Model:  接口   :数据传递给视图的一种方式
+
+
+
+controller可以返回      void      String     ModelAndView    
+
+
+
+参数中的注解       @RequestParam     形参的控制
+
+可以指定形参的名称,确保通过前台不能直接获得后台的数据结构
+
+
+
+value或者name指定前端发送过来的变量名称
+
+defaultValue指定如果不存在则设置的默认值
+
+required 要求必须提供该变量(不能限制变量是否为空)   
+
+
+
+# 自定义参数的绑定
+
+springMVC只提供了常规数据的转换,  例如   字符串转 Date 因为格式过多,系统未提供,需要我们自定义绑定
+
+
+
+# 对象封装的方式
+
+如果获取的是对象的属性,可以使用    .   语法访问依赖的对象的属性
+
+如果需要在前端给对象中的依赖对象注入值,表单组件的name可以使用  "."  语法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

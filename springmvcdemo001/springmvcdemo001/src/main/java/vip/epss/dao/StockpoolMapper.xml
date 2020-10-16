@@ -128,7 +128,7 @@
             <if test="sintime != null">
                 sintime,
             </if>
-            <if test="faid != null">
+            <if test="shaccount != null">
                 faid,
             </if>
         </trim>
@@ -148,8 +148,8 @@
             <if test="sintime != null">
                 #{sintime,jdbcType=TIMESTAMP},
             </if>
-            <if test="faid != null">
-                #{faid,jdbcType=INTEGER},
+            <if test="shaccount != null">
+                #{shaccount.aid,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>

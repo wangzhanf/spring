@@ -43,7 +43,7 @@ public class StockpoolServiceImpl implements StockpoolService {
 
     @Override
     public int insertSelective(Stockpool record) {
-        return 0;
+        return stockpoolMapper.insertSelective(record);
     }
 
     @Override

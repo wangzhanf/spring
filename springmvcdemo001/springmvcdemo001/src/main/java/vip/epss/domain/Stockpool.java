@@ -17,7 +17,7 @@ public class Stockpool implements Serializable {
 
     private Date sintime;
 
-    private Integer faid;
+//    private Integer faid;
 
     private Shaccount shaccount;
 }

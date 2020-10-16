@@ -3,12 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/cache"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/cache
        http://www.springframework.org/schema/cache/spring-cache.xsd
        http://www.springframework.org/schema/context
-       https://www.springframework.org/schema/context/spring-context.xsd">
+       https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 <!--    扫描所有的controller-->
     <context:component-scan base-package="vip.epss">
         <!--        springmvc负责controller,根据注解进行过滤-->
@@ -25,4 +26,17 @@
         <property name="suffix" value=".jsp"/> <!-- 视图后缀,controller中的方法返回的url字符串会添加该后缀 -->
 <!--        http://localhost:8080/springmvcdemo001_war_exploded/WEB-INF/abc.jsp-->
     </bean>
+
+<!--    格式转换器的注册-->
+    <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+<!--                自定义的String转Date,支持   yyyy-MM-dd      yyyy-MM-ddTHH:mm-->
+                <bean id="stdc" class="vip.epss.utils.StringToDateConvert"></bean>
+            </list>
+        </property>
+    </bean>
+
+<!--    开启springMvc的注解驱动: mvc的注解驱动可以在一个配置文件中多次配置-->
+    <mvc:annotation-driven conversion-service="formattingConversionService"></mvc:annotation-driven>
 </beans>
