@@ -17,7 +17,7 @@ public class Stockpool implements Serializable {
     private Integer shold;
 
     private Double sprice;
-    @Past(message = "{stockPool.sintime.error}")
+//    @Past(message = "{stockPool.sintime.error}")
     private Date sintime;
 
     private Integer faid;
