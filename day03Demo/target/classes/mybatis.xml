@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<!--&lt;!&ndash;    别名映射&ndash;&gt;-->
+<!--    <typeAliases>-->
+<!--        <package name="vip.epss.domain"/>-->
+<!--    </typeAliases>-->
+<!--&lt;!&ndash;        多环境切换&ndash;&gt;-->
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            &lt;!&ndash;            事务管理方式&ndash;&gt;-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            &lt;!&ndash;            数据源&ndash;&gt;-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/java6"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="mysql"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+<!--    <mappers>-->
+
+
+<!--        &lt;!&ndash;        如果在resources目录下,使用下行&ndash;&gt;-->
+<!--        &lt;!&ndash;        <mapper resource="UserMapper.xml"></mapper>&ndash;&gt;-->
+<!--        &lt;!&ndash;        如果使用如下方式,需要在pom.xml中发布资源&ndash;&gt;-->
+<!--        &lt;!&ndash;        <package name="vip.epss.dao"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <mapper class="vip.epss.dao.UserMapper"></mapper>&ndash;&gt;-->
+<!--&lt;!&ndash;        <mapper resource="vip/epss/dao/UserMapper.xml"></mapper>&ndash;&gt;-->
+<!--        <package name="vip.epss.dao"/>-->
+<!--    </mappers>-->
+</configuration>

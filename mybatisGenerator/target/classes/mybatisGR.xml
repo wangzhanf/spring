@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--  <properties resource="mybatis.properties" />
+         -->
+
+<!--    引入的jar包-->
+    <classPathEntry location="C:\Users\neustu\.m2\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar" />
+    <context id="msqlTables" targetRuntime="MyBatis3">
+<!--        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
+<!--        配置数据库连接-->
+        <commentGenerator>
+<!--            压制所有的注释生成-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/java6?useSLL=false"
+                        driverClass="com.mysql.jdbc.Driver" password="mysql" userId="root">
+
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+<!--        强制类型转换-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+<!--        实体类-->
+        <javaModelGenerator targetPackage="vip.epss.domain" targetProject="D:\wangzhanf\spring\mybatisGenerator\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+<!--        mapper接口 文件的配置-->
+        <sqlMapGenerator targetPackage="vip.epss.dao" targetProject="D:\wangzhanf\spring\mybatisGenerator\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--        mapperXML文件位置 文件的配置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.epss.dao" targetProject="D:\wangzhanf\spring\mybatisGenerator\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--数据库表生成-->
+        <table tableName="user" domainObjectName="User">
+        </table>
+        <table tableName="userinfo" domainObjectName="Userinfo">
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+dao层接口和mapper文件一般都是同名
+    UserMapper.xml           接口文件应该是    UserMapper.java
+    mapper文件中的namespace属性指向 接口
+    id指向 接口中的方法[id值和接口中的方法名相同]
+    parameterType  就是方法的形参
+    resultType   就是方法的返回值,如果是集合类型,使用元素类型表示
+-->
+
+<mapper namespace="vip.epss.dao.UserMapper">
+    <select id="selectAll" resultType="vip.epss.domain.User">
+        select * from user
+    </select>
+
+    <delete id="deleteByUid" parameterType="int">
+        delete from user where uid=#{uid}
+    </delete>
+</mapper>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vip.epss.dao.StockpoolMapper">
+    <resultMap id="BaseResultMap" type="vip.epss.domain.Stockpool">
+        <id column="sid" jdbcType="INTEGER" property="sid"/>
+        <result column="sname" jdbcType="VARCHAR" property="sname"/>
+        <result column="shold" jdbcType="INTEGER" property="shold"/>
+        <result column="sprice" jdbcType="DOUBLE" property="sprice"/>
+        <result column="sintime" jdbcType="TIMESTAMP" property="sintime"/>
+        <result column="faid" jdbcType="INTEGER" property="faid"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    sid, sname, shold, sprice, sintime, faid
+  </sql>
+    <select id="selectByExample" parameterType="vip.epss.domain.StockpoolExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from stockpool
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from stockpool
+        where sid = #{sid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stockpool
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="vip.epss.domain.StockpoolExample">
+        delete from stockpool
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="vip.epss.domain.Stockpool">
+    insert into stockpool (sid, sname, shold, 
+      sprice, sintime, faid
+      )
+    values (#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{shold,jdbcType=INTEGER}, 
+      #{sprice,jdbcType=DOUBLE}, #{sintime,jdbcType=TIMESTAMP}, #{faid,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="vip.epss.domain.Stockpool">
+        insert into stockpool
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                sid,
+            </if>
+            <if test="sname != null">
+                sname,
+            </if>
+            <if test="shold != null">
+                shold,
+            </if>
+            <if test="sprice != null">
+                sprice,
+            </if>
+            <if test="sintime != null">
+                sintime,
+            </if>
+            <if test="shaccount != null">
+                faid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=INTEGER},
+            </if>
+            <if test="sname != null">
+                #{sname,jdbcType=VARCHAR},
+            </if>
+            <if test="shold != null">
+                #{shold,jdbcType=INTEGER},
+            </if>
+            <if test="sprice != null">
+                #{sprice,jdbcType=DOUBLE},
+            </if>
+            <if test="sintime != null">
+                #{sintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shaccount != null">
+                #{shaccount.aid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="vip.epss.domain.StockpoolExample" resultType="java.lang.Long">
+        select count(*) from stockpool
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update stockpool
+        <set>
+            <if test="record.sid != null">
+                sid = #{record.sid,jdbcType=INTEGER},
+            </if>
+            <if test="record.sname != null">
+                sname = #{record.sname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.shold != null">
+                shold = #{record.shold,jdbcType=INTEGER},
+            </if>
+            <if test="record.sprice != null">
+                sprice = #{record.sprice,jdbcType=DOUBLE},
+            </if>
+            <if test="record.sintime != null">
+                sintime = #{record.sintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.faid != null">
+                faid = #{record.faid,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update stockpool
+        set sid = #{record.sid,jdbcType=INTEGER},
+        sname = #{record.sname,jdbcType=VARCHAR},
+        shold = #{record.shold,jdbcType=INTEGER},
+        sprice = #{record.sprice,jdbcType=DOUBLE},
+        sintime = #{record.sintime,jdbcType=TIMESTAMP},
+        faid = #{record.faid,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="vip.epss.domain.Stockpool">
+        update stockpool
+        <set>
+            <if test="sname != null">
+                sname = #{sname,jdbcType=VARCHAR},
+            </if>
+            <if test="shold != null">
+                shold = #{shold,jdbcType=INTEGER},
+            </if>
+            <if test="sprice != null">
+                sprice = #{sprice,jdbcType=DOUBLE},
+            </if>
+            <if test="sintime != null">
+                sintime = #{sintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="faid != null">
+                faid = #{faid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where sid = #{sid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="vip.epss.domain.Stockpool">
+    update stockpool
+    set sname = #{sname,jdbcType=VARCHAR},
+      shold = #{shold,jdbcType=INTEGER},
+      sprice = #{sprice,jdbcType=DOUBLE},
+      sintime = #{sintime,jdbcType=TIMESTAMP},
+      faid = #{faid,jdbcType=INTEGER}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+
+    <!--  自己创建的内容  开始-->
+    <!--  通过外键关联实现查找用户的时候能够查找到其所持有的所有股票-->
+    <select id="selectByForeignKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from stockpool
+        where faid = #{faid,jdbcType=INTEGER}
+    </select>
+    <!--  查询某一只股票的同时获得其持有账号的信息-->
+    <select id="selectByPrimaryKeyWithObject" parameterType="java.lang.Integer" resultMap="BaseResultMapWithObject">
+        select
+        <include refid="Base_Column_List_With_Object"/>
+        from stockpool sp
+        left join shaccount sa on sp.faid=sa.aid
+        where sid = #{sid,jdbcType=INTEGER}
+    </select>
+    <!--  连接查询的字段-->
+    <sql id="Base_Column_List_With_Object">
+    sp.sid, sp.sname, sp.shold, sp.sprice, sp.sintime, sp.faid, sa.aid, sa.aname, sa.ainmarket
+  </sql>
+    <!--  携带了账号信息的查询映射-->
+    <resultMap id="BaseResultMapWithObject" type="vip.epss.domain.Stockpool">
+        <id column="sid" jdbcType="INTEGER" property="sid"/>
+        <result column="sname" jdbcType="VARCHAR" property="sname"/>
+        <result column="shold" jdbcType="INTEGER" property="shold"/>
+        <result column="sprice" jdbcType="DOUBLE" property="sprice"/>
+        <result column="sintime" jdbcType="TIMESTAMP" property="sintime"/>
+        <result column="faid" jdbcType="INTEGER" property="faid"/>
+        <association property="shaccount" javaType="Shaccount">
+            <id property="aid" column="aid"></id>
+            <result property="aname" column="aname"></result>
+            <result property="ainmarket" column="ainmarket"></result>
+        </association>
+    </resultMap>
+    <!--  自己创建的内容  结束-->
+</mapper>
