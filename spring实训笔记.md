@@ -1345,21 +1345,82 @@ springMVC只提供了常规数据的转换,  例如   字符串转 Date 因为�
 
 
 
+# 数据校验
+
+验证数据的合法性[永远不要相信用户的输入]
+
+客户端的HTML验证    type=email    只有在提交时才验证
+
+客户端的js验证            客户端代码有可能被更改
+
+parms       @RequestParm           验证的规则过于单一
+
+独立的后端验证方式[通用的验证放在Controller中   ,     核心数据验证放在service中]
+
+
+
+springMVC使用的验证方式是JSR303    [规范(接口)]   具体的实现    hibernate-validation               SSM
 
 
 
 
 
+## 实现的方式
+
+1 导入核心的验证包    JSR303    validation-api         实现包   hibernate`-validator
+
+```xml
+<!--        数据校验-->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.17.Final</version>
+    </dependency>
+```
 
 
 
+配置化校验器
 
+```xml
+<!--    校验器-->
+    <!-- 校验错误信息配置文件 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <!-- 资源文件名-->
+        <property name="basenames">
+            <list><!--创建的配置文件名为 CustomValidationMessages.properties  -->
+                <value>classpath:CustomValidationMessages</value>
+            </list>
+        </property>
+        <!-- 资源文件编码格式 -->
+        <property name="defaultEncoding" value="utf-8" />
+        <!-- 对资源文件内容缓存时间，单位秒 -->
+        <property name="cacheSeconds" value="120" />
+    </bean>
 
+    <!-- 校验器 -->
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!-- hibernate校验器-->
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+        <!-- 指定校验使用的资源文件，在文件中配置校验错误信息，如果不指定则默认使用classpath下的ValidationMessages.properties -->
+        <property name="validationMessageSource" ref="messageSource" />
+    </bean>
 
+    <!--开启校验器的注解驱动-->
+    <mvc:annotation-driven validator="validator"></mvc:annotation-driven>
+```
 
+3 添加数据校验的规则以及出错的提示信息
 
-
-
+yiji
 
 
 

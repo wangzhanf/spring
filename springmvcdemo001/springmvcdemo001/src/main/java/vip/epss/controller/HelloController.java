@@ -5,6 +5,8 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
@@ -26,7 +28,7 @@ public class HelloController {
 
 //    @ResponseBody
 //    设置虚拟路径的映射,当前的路径和对应的handler放在映射处理器中
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index",method = {RequestMethod.GET})
     public String sayHello(){
         return "abc";
     }
