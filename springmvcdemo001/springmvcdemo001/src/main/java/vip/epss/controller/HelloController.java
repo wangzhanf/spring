@@ -74,40 +74,40 @@ public class HelloController {
 
     @RequestMapping(value ="/jsonObj")
     public void testJson2(HttpServletResponse response) throws IOException {
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("application/json;charset=utf-8");
-        User user = new User(1, "zs", "123");
-//        response.getWriter().write(user.toString());
-        //如果通过覆写toString的方式返回json格式的数据[易错],需要客户端通过js将字符串转换为json
-        //推荐使用json的转换库   fastjson   ,导入依赖库
-        response.getWriter().write(JSONArray.toJSONString(user));
+//        response.setCharacterEncoding("utf-8");
+//        response.setContentType("application/json;charset=utf-8");
+//        User user = new User(1, "zs", "123");
+////        response.getWriter().write(user.toString());
+//        //如果通过覆写toString的方式返回json格式的数据[易错],需要客户端通过js将字符串转换为json
+//        //推荐使用json的转换库   fastjson   ,导入依赖库
+//        response.getWriter().write(JSONArray.toJSONString(user));
     }
 
     @RequestMapping(value = "/model")
     public String test001(Model model){
-        User user = new User(1, "zs", "123");
-        model.addAttribute("user",user);//model填充数据的方式是 map集合, 一次request有效
+//        User user = new User(1, "zs", "123");
+//        model.addAttribute("user",user);//model填充数据的方式是 map集合, 一次request有效
        return "abc";
     }
 
-    @RequestMapping(value = "/mav")
-    public ModelAndView test002(){
-        ModelAndView modelAndView = new ModelAndView();
-
-        List<User> users = new ArrayList<>();
-        users.add(new User(1, "zs", "123"));
-        users.add(new User(1, "ls", "123"));
-        users.add(new User(1, "ww", "123"));
-        users.add(new User(1, "mal", "123"));
-
-        if(users.size() == 0){
-            modelAndView.setViewName("register");
-        }else{
-            modelAndView.setViewName("abc");
-        }
-
-        modelAndView.addObject("users",users);
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/mav")
+//    public ModelAndView test002(){
+//        ModelAndView modelAndView = new ModelAndView();
+////
+////        List<User> users = new ArrayList<>();
+////        users.add(new User(1, "zs", "123"));
+////        users.add(new User(1, "ls", "123"));
+////        users.add(new User(1, "ww", "123"));
+////        users.add(new User(1, "mal", "123"));
+//
+////        if(users.size() == 0){
+////            modelAndView.setViewName("register");
+////        }else{
+////            modelAndView.setViewName("abc");
+////        }
+////
+////        modelAndView.addObject("users",users);
+////        return modelAndView;
+//    }
 
 }

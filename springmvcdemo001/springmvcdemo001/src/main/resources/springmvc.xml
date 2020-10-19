@@ -29,6 +29,17 @@
 <!--        http://localhost:8080/springmvcdemo001_war_exploded/WEB-INF/abc.jsp-->
     </bean>
 
+<!--    配置拦截器-->
+    <mvc:interceptors>
+<!--        登录拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+<!--            将静态资源过滤掉,不用拦截-->
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="vip.epss.interceptor.LoginInterceptor" id="loginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 <!--    格式转换器的注册-->
     <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">

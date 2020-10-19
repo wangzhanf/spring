@@ -21,6 +21,8 @@
     <title>站点首页</title>
 </head>
 <body>
+<a href="${app}/user/login">去登录</a>  当前登录用户:${USER_SESSION}   <a href="${app}/user/logou">退出登录</a>
+
     <a href="${app}/user/reg">用户111111注册</a>
     <hr />传递独立参数
 <form method="get" action="${app}/shaccount/add2">
