@@ -38,8 +38,7 @@
             </list>
         </property>
     </bean>
-    <!--    开启springMvc的注解驱动: mvc的注解驱动可以在一个配置文件中多次配置-->
-    <mvc:annotation-driven conversion-service="formattingConversionService"></mvc:annotation-driven>
+
 <!--    校验器-->
     <!-- 校验错误信息配置文件 -->
     <bean id="messageSource"
@@ -66,5 +65,6 @@
     </bean>
 
     <!--开启校验器的注解驱动-->
-    <mvc:annotation-driven validator="validator"></mvc:annotation-driven>
+    <!--    开启springMvc的注解驱动: mvc的注解驱动可以在一个配置文件中多次配置-->
+    <mvc:annotation-driven conversion-service="formattingConversionService"  validator="validator"></mvc:annotation-driven>
 </beans>

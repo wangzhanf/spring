@@ -8,6 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%--引入jstl的标签库--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--引入jstl的格式化标签库--%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--引入spring的表单标签库--%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%
     String appPath = request.getContextPath();
     request.getSession().setAttribute("app",appPath);
@@ -33,15 +37,15 @@
         <input type="submit" value="添加新账号" />
     </form>
     <hr />传递对象
-    <form method="get" action="${app}/stockPool/add">
+    <sf:form method="get" action="${app}/stockPool/add" modelAttribute="stockPool">
         <input type="text" name="sid" value="${stockPool.sid}" />
-        <input type="text" name="sname" value="${stockPool.sname}" />
-        <input type="text" name="shold" value="${stockPool.shold}" />
+        <input type="text" name="sname"  value="${stockPool.sname}" /><sf:errors path="sname"></sf:errors>
+        <input type="text" name="shold" value="${stockPool.shold}" /><sf:errors path="shold"></sf:errors>
         <input type="text" name="sprice" value="${stockPool.sprice}" />
-        <input type="text" name="sintime" value="${stockPool.sintime}" />
+        <input type="date" name="sintime" value="<fmt:formatDate value="${stockPool.sintime}" pattern="yyyy-MM-dd"></fmt:formatDate>" />
         <input type="text" name="shaccount.aid" value="${stockPool.shaccount.aid}" />
         <input type="submit" value="添加新账号" />
-    </form>
+    </sf:form>
     <c:if test="${allErrors != null}">
         <c:forEach items="${allErrors}"  var="tempError">
             ${tempError.defaultMessage} <br />
