@@ -14,4 +14,10 @@ import java.util.List;
  */
 public interface UserService {
     public abstract User selectUser(User user);
+    
+    public abstract User selectByPrimaryKey(Integer uid);
+    public abstract List<User> select();
+    public abstract Integer insert(User user);
+    public abstract Integer delete(Integer uid);
+    public abstract Integer update(User user);
 }

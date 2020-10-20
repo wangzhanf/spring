@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import vip.epss.domain.User;
@@ -27,9 +25,49 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = "list")
+    public ModelAndView list(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("pages/user/list");
+        List<User> users = userService.select();
+        modelAndView.addObject("users",users);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete")
+    public String delete1(Integer uid){
+        userService.delete(uid);
+        return "redirect:list";
+    }
+
+
+    //REST风格的程序演示
+    @RequestMapping(value = "/opt",method = {RequestMethod.POST})
+    public String add(User user){
+        System.out.println("添加其中一个用户的controller执行了");
+        return "abc";
+    }
+
+    @RequestMapping(value = "/opt/{id}",method = {RequestMethod.GET})
+    public String get(@PathVariable("id") Integer uid){
+        System.out.println("查询其中一个用户的controller执行了");
+        return "abc";
+    }
+
+    @RequestMapping(value = "/opt/{id}",method = {RequestMethod.DELETE})
+    public String delete(@PathVariable("id") Integer uid){
+        System.out.println("delete其中一个用户的controller执行了");
+        return "abc";
+    }
+
+
+
+
+
+
     @ResponseBody   //将返回的内容按照原始文档体的方式返回给调用者
-    @RequestMapping(value = "/list")
-    public MessageAndData list(){
+    @RequestMapping(value = "/newlist")
+    public MessageAndData newlist(){
         List<User> users = new ArrayList<>();
         users.add(new User(1, "zs", "1"));
         users.add(new User(2, "ls", "1"));

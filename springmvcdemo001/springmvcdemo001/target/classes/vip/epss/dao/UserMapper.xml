@@ -4,4 +4,25 @@
     <select id="selectUser" parameterType="vip.epss.domain.User" resultType="vip.epss.domain.User">
         select * from user where username=#{username} and password=#{password}
     </select>
+
+    <select id="selectByPrimaryKey" resultType="vip.epss.domain.User">
+        select * from user where uid=#{uid}
+    </select>
+
+    <select id="select" resultType="vip.epss.domain.User">
+        select * from user
+    </select>
+
+    <insert id="insert" parameterType="vip.epss.domain.User">
+        insert into user (username,password) values (#{username},#{password})
+    </insert>
+
+    <delete id="delete">
+        delete from user where uid=#{uid}
+    </delete>
+
+    <update id="update" parameterType="vip.epss.domain.User">
+        update user set username=#{username},password=#{password} where uid=#{uid}
+    </update>
+
 </mapper>

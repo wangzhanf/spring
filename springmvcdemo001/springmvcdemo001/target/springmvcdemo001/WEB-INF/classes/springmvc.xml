@@ -29,6 +29,10 @@
 <!--        http://localhost:8080/springmvcdemo001_war_exploded/WEB-INF/abc.jsp-->
     </bean>
 
+<!--    <mvc:default-servlet-handler />-->
+
+    <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+
 <!--    配置拦截器-->
     <mvc:interceptors>
 <!--        登录拦截器-->

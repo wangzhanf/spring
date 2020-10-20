@@ -1461,3 +1461,18 @@ spring的上传
 2 如果整个controller都是用json作为相应,可以使用@RESTController修饰类
 
 如果方法响应数据为json,使用@ResponseBody修饰方法
+
+
+
+
+
+
+
+
+
+# 静态资源的发布
+
+js,css,font,img
+
+
+

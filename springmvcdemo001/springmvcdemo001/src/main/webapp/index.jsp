@@ -19,6 +19,7 @@
 <html>
 <head>
     <title>站点首页</title>
+    <link rel="stylesheet" href="${app}/static/css/bootstrap.css" />
 </head>
 <body>
 <a href="${app}/user/login">去登录</a>  当前登录用户:${USER_SESSION}   <a href="${app}/user/logout">退出登录</a>
@@ -67,15 +68,31 @@
 <hr />
 <input id="username" type="text" name="username" />
 
+
 <button id="getJson">获取json数据</button>
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<select id="ch">
+</select>
+
+
+<hr />
+<form action="${app}/user/opt" method="post">
+    <input type="submit" value="post请求" />
+</form>
+<form action="${app}/user/opt/1" method="get">
+    <input type="submit" value="get请求" />
+</form>
+    <script src="${app}/static/js/jquery-3.3.1.js"></script>
+    <script src="${app}/static/js/bootstrap.js"></script>
 <script>
     $(document).ready(function (){
             $("#getJson").click(function (){
                 $.get(
                     "${app}/user/list",
                     function (data){
-                        console.log(data);
+                        alert(data.message);
+                        for(var i=0;i<data.dataZone.users.length;i++){
+                            $("#ch").append("<option>"+ data.dataZone.users[i].username +"</option>")
+                        }
                     }
                 );
             });
