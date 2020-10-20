@@ -21,7 +21,7 @@
     <title>站点首页</title>
 </head>
 <body>
-<a href="${app}/user/login">去登录</a>  当前登录用户:${USER_SESSION}   <a href="${app}/user/logou">退出登录</a>
+<a href="${app}/user/login">去登录</a>  当前登录用户:${USER_SESSION}   <a href="${app}/user/logout">退出登录</a>
 
     <a href="${app}/user/reg">用户111111注册</a>
     <hr />传递独立参数
@@ -54,13 +54,32 @@
         </c:forEach>
     </c:if>
     <hr />
+
+<hr />
+<form method="post" action="${app}/user/up" enctype="multipart/form-data">
+    <input type="text" name="username" />
+    <input type="file" name="item" />
+    <input type="submit" value="执行操作" />
+</form>
+<hr />
 <a href="${app}/shaccount/addShaccount?aname=abcdefg">添加一个新账号</a>
 
 <hr />
 <input id="username" type="text" name="username" />
+
+<button id="getJson">获取json数据</button>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     $(document).ready(function (){
+            $("#getJson").click(function (){
+                $.get(
+                    "${app}/user/list",
+                    function (data){
+                        console.log(data);
+                    }
+                );
+            });
+
             $("#username").blur(function (){
                 $.get("${app}/hello/jsonStr?un="+$("#username").val(),function (res){
                     alert(res);

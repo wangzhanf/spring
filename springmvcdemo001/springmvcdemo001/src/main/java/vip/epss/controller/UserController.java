@@ -6,10 +6,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import vip.epss.domain.User;
 import vip.epss.service.UserService;
+import vip.epss.utils.MessageAndData;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @RequestMapping(value = "/user")
 @Controller
@@ -17,6 +26,17 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @ResponseBody   //将返回的内容按照原始文档体的方式返回给调用者
+    @RequestMapping(value = "/list")
+    public MessageAndData list(){
+        List<User> users = new ArrayList<>();
+        users.add(new User(1, "zs", "1"));
+        users.add(new User(2, "ls", "1"));
+        users.add(new User(3, "ww", "1"));
+
+        return MessageAndData.success().add("users",users);
+    }
 
     @RequestMapping(value = "/login")
     public String toLogin(){
@@ -58,5 +78,31 @@ public class UserController {
     public void doRegister(User user){
         System.out.println(user);
         System.out.println("处理用户的注册申请");
+    }
+
+
+
+    @RequestMapping(value = "/up")
+    public String up(String username,MultipartFile item) throws IOException {
+//        System.out.println(username);
+//        System.out.println(item);
+
+        //原始名称
+        String originalFilename = item.getOriginalFilename();
+        if(item !=null && originalFilename !=null && originalFilename.length()>0) {
+            //存储图片的物理路径
+            String pic_path = "c:\\upload\\";
+            //新的图片名称
+            String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
+            //新图片
+            File newFile = new File(pic_path + newFileName);
+
+            //将内存的数据写入磁盘
+            item.transferTo(newFile);
+
+        }
+//
+
+        return "register";
     }
 }

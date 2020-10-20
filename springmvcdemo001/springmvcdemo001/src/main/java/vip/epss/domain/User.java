@@ -14,5 +14,12 @@ public class User {
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$",message = "{user.password.error}")
     private String password;
 
+    public User() {
+    }
 
+    public User(Integer uid, @Size(min = 2, max = 12, message = "{user.username.error}") String username, @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$", message = "{user.password.error}") String password) {
+        this.uid = uid;
+        this.username = username;
+        this.password = password;
+    }
 }

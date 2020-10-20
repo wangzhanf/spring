@@ -1436,3 +1436,28 @@ springMVC使用的验证方式是JSR303    [规范(接口)]   具体的实现   
 
 
 
+# 文件上传
+
+write
+
+spring的上传
+
+文件的上传:
+
+1 直接将文件编码之后存放在数据表的   BLOB字段[数字签名]
+
+2 将文件的路径存放在数据表的 varchar字段
+
+
+
+
+
+
+
+# 如何使用json
+
+1 引入依赖包
+
+2 如果整个controller都是用json作为相应,可以使用@RESTController修饰类
+
+如果方法响应数据为json,使用@ResponseBody修饰方法
