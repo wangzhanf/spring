@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import vip.epss.domain.User;
 import vip.epss.service.UserService;
 import vip.epss.utils.MessageAndData;
@@ -25,7 +26,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "list")
+    @RequestMapping(value = "/list")
     public ModelAndView list(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/user/list");
@@ -37,6 +38,35 @@ public class UserController {
     @RequestMapping(value = "/delete")
     public String delete1(Integer uid){
         userService.delete(uid);
+        return "redirect:list";
+    }
+    //到添加页面的路由
+    @RequestMapping(value = "/addForm")
+    public String addForm(){
+        return "pages/user/addForm";
+    }
+
+    //添加新用户
+    @RequestMapping(value = "/insertUser")
+    public String insertUser(User user){
+        userService.insert(user);
+        return "redirect:list";
+    }
+
+    //到修改表单页面的路由
+    @RequestMapping(value = "/updateForm")
+    public ModelAndView updateForm(Integer uid){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userService.selectByPrimaryKey(uid);
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("pages/user/updateForm");
+        return modelAndView;
+    }
+
+    //添加新用户
+    @RequestMapping(value = "/updateUser")
+    public String updateUser(User user){
+        userService.update(user);
         return "redirect:list";
     }
 

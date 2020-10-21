@@ -13,7 +13,7 @@
     <title>用户列表</title>
 </head>
 <body>
-<a href="${app}/user/insert">添加新用户</a>
+<a href="${app}/user/addForm">添加新用户</a>
     <table>
         <thead>
         <tr>
@@ -35,7 +35,7 @@
                 <td>${user.uid}</td>
                 <td>${user.username}</td>
                 <td>${user.password}</td>
-                <td>修改</td>
+                <td><a href="${app}/user/updateForm?uid=${user.uid}">修改</a></td>
                 <td><a href="${app}/user/delete?uid=${user.uid}">删除</a></td>
             </tr>
         </c:forEach>
